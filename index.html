@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Search Any Time</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css"> </head>
+
+<body>
+	<div id="overlayforurldownload"> <img src="./Images/Loading/loading.gif" alt=""> </div>
+	<button id="show" style="display: none;">Retrieve All</button>
+	<div class="container">
+		<div class="well well-sm text-center" id="welcome-msg">welcome to dropit share with anyone</div>
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Select and Upload File</div>
+				<div class="panel-body">
+					<div class="well well-sm" id="select_div"> <img src="./Images/Loading/uplode.gif" alt="upload gif">
+						<button type="button" class="btn btn-primary" id="select">Select File <span class="glyphicon glyphicon-open-file"></span></button>
+					</div>
+					<div class="well well-sm" id="showinfo_div">
+						<p id="show-info-file-name">FileName </p>
+						<p id="show-info-file-type">Filetype </p> <img src="./Images/FileIcons/file.png" alt="upload gif" id="show_info_file_type_img">
+						<p id="show-info-status">waiting for file </p>
+						<div id="uplode_btn"> <img src="./Images/Loading/Waiting.gif" id="uplode_btn_img" alt="upload gif">
+							<button type="button" class="btn btn-success" id="upload" disabled>Upload File <span class="glyphicon glyphicon-cloud-upload"></span></button>
+						</div>
+					</div>
+					<div class="well well-sm" id="upload-complete-div">
+						<div class="progress" id="div_uplodeprogrssbar">
+							<div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" id="uplodeprogrssbar"> Waiting for upload </div>
+						</div>
+						<p><img src="./Images/Loading/Waiting.gif" alt="uploading" id="uploading-img"> <span id="fileaccessid">Your file access ID will appare here</span></p>
+						<div id="link-copy-div" class="row">
+							<div id="wall" class="col-lg-11">
+								<div class="well well-sm" id="copy_txt"> Your access link will appare here </div>
+								<input id="gogo" style="display:block;height: 0;opacity: 0;"> </div>
+							<div id="btncopy" class="col-lg-1">
+								<button id="copylink" class="btn btn-primary" onclick="copylinkfun()" data-toggle="modal" data-target="#myModal" disabled><span class="glyphicon glyphicon-copy"></span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Retrive File</div>
+				<div class="panel-body">
+					<div class="well well-sm" id="search_div"> <img src="./Images/Loading/search.gif" alt="search gif">
+						<input placeholder="ID" id="namebox" type="number" required>
+						<button id="retrieve" class="btn btn-success">Retrieve File <span class="glyphicon glyphicon-search"></span></button>
+					</div>
+					<div class="well well" id="search_result_div">
+						<p id="search-file-id">ID</p>
+						<p id="search-file-name">FileName</p> <img src="./Images/FileIcons/file.png" alt="upload gif" id="search-file-type">
+						<p id="search-file-status">Status</p>
+						<div id="download-btn-div"> <img src="./Images/Loading/Waiting.gif" alt="find gif" id="download-btn-img"> <a class="btn btn-success disabled" target="_blank" href="" id="download-btn">Download File <span class="glyphicon glyphicon-circle-arrow-down"></span></a> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Retrive All Data</div>
+				<div class="panel-body">
+					<div class="well well-sm text-center" id="checkpass_sts">enter your password here</div>
+					<div class="well well-sm" id="checkpass_div"> <img src="./Images/Loading/lock.gif" alt="lock gif" id="lockicon">
+						<input placeholder="Password" id="passfield" required type="password">
+						<button id="passcheck" class="btn btn-success">Check And Retrive All Data <span class="glyphicon glyphicon-th"></span></button>
+					</div>
+					<div id="allret"></div>
+				</div>
+			</div>
+		</div>
+		<div class="well well-sm text-center" id="welcome-msg">created by <a href="https://github.com/heyatanu" target="_blank" style="text-decoration: none;">ATANU</a></div>
+	</div>
+	<div class="container">
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<div class="alert alert-success alert-dismissible"> <a class="close" data-dismiss="modal" aria-label="close">&times;</a> <strong>Success!</strong> Link copied to clipboard<strong><a href="#" target="_blank" id="alertopenlink" style="text-decoration: none;"> Open Link <span class="glyphicon glyphicon-paperclip"></span></a></strong> </div>
+			</div>
+		</div>
+	</div>
+	<button type="button" style="display: none;" data-toggle="modal" data-target="#fromlinknotfound" id="fromlinkbtn">Open Modal</button>
+	<div class="container">
+		<div class="modal fade" id="fromlinknotfound" role="dialog">
+			<div class="modal-dialog">
+				<div class="alert alert-danger alert-dismissible" id="fromurldib"> <a class="close" data-dismiss="modal" aria-label="close">&times;</a>
+					<p><strong id="link-status-txt">Check the 'Retrive File' section</strong></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<!-- ------------------------FIRBASE LIBRARIES------------------------------------------------->
+	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+	<script src="./InitializeFirebase.js"></script>
+	<script src="./SelectAndUplodeFile.js"></script>
+	<script src="./RetriveFile.js"></script>
+	<script src="./ShowAll.js"></script>
+	<script src="./FromUrlOpen.js"></script>
+</body>
+
+</html>
