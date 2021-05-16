@@ -16,7 +16,7 @@ if (search.includes(",") || slicestr != "id" && search != "") {
       document.getElementById("overlayforurldownload").style.display = "none";
       document.body.style.overflow = "auto";
       let aclink = (snapshot.val().Link)
-      window.location.replace(url.origin)
+      console.log(url)
       window.open(aclink)
 
     } else {
@@ -25,7 +25,7 @@ if (search.includes(",") || slicestr != "id" && search != "") {
       document.getElementById("fromlinkbtn").click()
       document.getElementById("overlayforurldownload").style.display = "none";
     }
-    
+
   });
 
 
