@@ -15,9 +15,9 @@ if (search.includes(",") || slicestr != "id" && search != "") {
     if (snapshot.val() != null) {
       document.getElementById("overlayforurldownload").style.display = "none";
       document.body.style.overflow = "auto";
-      let aclink = (snapshot.val().Link)
+      let aclink = snapshot.val().Link;
       console.log(url)
-      window.open(aclink)
+      window.location.replace(aclink);
 
     } else {
       document.body.style.overflow = "auto";
