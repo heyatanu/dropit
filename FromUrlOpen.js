@@ -17,7 +17,16 @@ if (search.includes(",") || slicestr != "id" && search != "") {
       document.body.style.overflow = "auto";
       let aclink = (snapshot.val().Link);
     //   console.log(url)
-      window.location.replace(aclink)
+      window.open(aclink)
+      // window.open(
+      //   aclink, "window name",
+      //   "height=200,width=200,modal=yes,alwaysRaised=yes");
+        
+      let af=url.origin+url.pathname
+      console.log(af)
+      window.location.replace(af)
+
+
 
     } else {
       document.body.style.overflow = "auto";
