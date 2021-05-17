@@ -3,23 +3,19 @@
 
 <head>
 	<title>DropIT</title>
-	<meta charset="utf-8"> 
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="Images/logo.ico">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css"> </head>
-	<link rel="stylesheet" href="./Responsive.css"> </head>
+<link rel="stylesheet" href="./Responsive.css"> </head>
 
 <body>
-	<div id="overlayforurldownload"><img id="overlayforurldownload-img" src="./Images/Loading/loading.gif" alt=""> 
-		<div class="text-center">
-		<a id="overlayforurldownload-a" class="btn btn-dark disabled btn-lg" href="" >loading . .</a>
-		<br>
-		<a id="overlayforurldownload-dropit" class="btn btn-success" href="" >HOME </a>
-		  </div>
-		<p  id="overlayforurldownload-p">wait we are checking</p>
-	 </div>
-
+	<div id="overlayforurldownload"><img id="overlayforurldownload-img" src="./Images/Loading/loading.gif" alt="">
+		<div class="text-center"> <a id="overlayforurldownload-a" class="btn btn-dark disabled btn-lg" href="">loading . .</a>
+			<br> <a id="overlayforurldownload-dropit" class="btn btn-success" href="">HOME </a> </div>
+		<p id="overlayforurldownload-p">wait we are checking</p>
+	</div>
 	<button id="show" style="display: none;">Retrieve All</button>
 	<div class="container" id="container-id">
 		<div class="well well-sm text-center" id="welcome-msg">welcome to dropit share with anyone</div>
@@ -36,6 +32,12 @@
 						<p id="show-info-status">waiting for file </p>
 						<div id="uplode_btn"> <img src="./Images/Loading/Waiting.gif" id="uplode_btn_img" alt="upload gif">
 							<button type="button" class="btn btn-success" id="upload" disabled>Upload File <span class="glyphicon glyphicon-cloud-upload"></span></button>
+						</div>
+					</div>
+					<div class="well well-sm" id="for-delete-div">
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="for-delete-checkbox" disabled>
+							<label class="form-check-label" id="for-delete-sts"> waiting for file </label>
 						</div>
 					</div>
 					<div class="well well-sm" id="upload-complete-div">
@@ -81,7 +83,27 @@
 						<input placeholder="Password" id="passfield" required type="password">
 						<button id="passcheck" class="btn btn-success">Check And Retrive All Data <span class="glyphicon glyphicon-th"></span></button>
 					</div>
-					<div id="allret"></div>
+					<div id="allret">
+						<div class="well well-sm" id="retall_div"> <img src="./Images/FileIcons/file.png" alt="upload gif" id="ret_file_type_img">
+							<p id="ret-file-id">ID</p>
+							<p id="ret-file-name">FileName</p>
+							<p id="ret-file-status">Status</p>
+							<div id="ret-download-btn"> <img src="./Images/Loading/Waiting.gif" id="ret-download-btn-img" alt="upload gif"> <a class="btn btn-success" href="` + filelink + `" id="showalldownloadbtn">Download File</a> </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Delete Data</div>
+				<div class="panel-body">
+					<div class="well well-sm text-center" id="deletedata-sts">delete file</div>
+					<div class="well well-sm" id="deletedata-div"> <img src="./Images/Loading/trash.gif" alt="lock gif" id="deletedata-icon">
+						<input placeholder="ID" id="deletedata-id" required type="number">
+						<input placeholder="File type(gif,zip,jpg)" id="deletedata-ex" required type="text">
+						<button id="deletedata-btn" class="btn btn-danger">Delete This <span class="glyphicon glyphicon-trash"></span></button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -94,12 +116,12 @@
 			</div>
 		</div>
 	</div>
-	<button type="button" style="display: none;" data-toggle="modal" data-target="#onlineoroffline" id="onlinorofflineid">Open Modal</button>
+	<button type="button" style="display: none;" data-toggle="modal" data-target="#onlineoroffline" id="fromlinkbtn">Open Modal</button>
 	<div class="container">
 		<div class="modal fade" id="onlineoroffline" role="dialog">
 			<div class="modal-dialog">
 				<div class="alert alert-danger alert-dismissible" id="fromurldib"> <a class="close" data-dismiss="modal" aria-label="close">&times;</a>
-					<p><strong id="link-status-txt">connection lost</strong></p>
+					<p><strong id="link-status-txt"></strong></p>
 				</div>
 			</div>
 		</div>
@@ -117,7 +139,8 @@
 	<script src="./RetriveFile.js"></script>
 	<script src="./ShowAll.js"></script>
 	<script src="./FromUrlOpen.js"></script>
-	<script src="./onlineORoffline.js"></script>
+	<script src="./DeleteData.js"></script>
+	<script src="./DeleteAllData.js"></script>
 </body>
 
 </html>
