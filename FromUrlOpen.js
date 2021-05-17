@@ -13,18 +13,21 @@ if (search.includes(",") || slicestr != "id" && search != "") {
   firebase.database().ref('Picture/' + id).on('value', function(snapshot) {
 
     if (snapshot.val() != null) {
-      document.getElementById("overlayforurldownload").style.display = "none";
-      document.body.style.overflow = "auto";
       let aclink = (snapshot.val().Link);
-    //   console.log(url)
-      //window.open(aclink)
-      window.open(
-        aclink, "window name",
-        "height=200,width=200,modal=yes,alwaysRaised=yes");
+      document.getElementById("overlayforurldownload-img").src='./Images/Loading/download.gif';
+      document.getElementById("overlayforurldownload-a").classList.remove("disabled");
+      document.getElementById("overlayforurldownload-a").innerHTML="download now";
+      document.getElementById("overlayforurldownload-a").href=aclink;
+      document.getElementById("overlayforurldownload-p").innerHTML="ready for download";
+      document.getElementById("overlayforurldownload-a").onclick = function() {
+        document.getElementById("overlayforurldownload").style.display = "none";
+        document.body.style.overflow = "auto";
+        let af=url.origin+url.pathname
+        console.log(af)
+        window.location.replace(af)
+      }
         
-      let af=url.origin+url.pathname
-      // console.log(af)
-      window.location.replace(af)
+
 
 
 

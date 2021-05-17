@@ -10,7 +10,13 @@
 	<link rel="stylesheet" href="style.css"> </head>
 
 <body>
-	<div id="overlayforurldownload"> <img src="./Images/Loading/loading.gif" alt=""> </div>
+	<div id="overlayforurldownload"><img id="overlayforurldownload-img" src="./Images/Loading/loading.gif" alt=""> 
+		<div class="text-center">
+		<a id="overlayforurldownload-a" class="btn btn-primary disabled" href="" target="_blank">loading . .</a>
+		  </div>
+		<p  id="overlayforurldownload-p">wait we are checking</p>
+	 </div>
+
 	<button id="show" style="display: none;">Retrieve All</button>
 	<div class="container" id="container-id">
 		<div class="well well-sm text-center" id="welcome-msg">welcome to dropit share with anyone</div>

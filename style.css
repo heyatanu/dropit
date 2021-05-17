@@ -29,17 +29,33 @@ button {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.7);
+	/* background-color: rgba(0, 0, 0, 0.7); */
+	background-color: #ffff;
 	z-index: 2;
-	cursor: pointer;
+	/* cursor: pointer; */
+}
+#overlayforurldownload-a{
+	margin-bottom: 20px;
+	font-weight: 500;
+	letter-spacing: 2px;
+	text-transform: uppercase;
 }
 #overlayforurldownload>img {
-	width: 7%;
+	width: 20%;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 15%;
 	display: block;
 	overflow: hidden;
+}
+#overlayforurldownload>p{
+	text-align: center;
+	/* margin-left: 8rem; */
+	font-size: 1.4rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	word-spacing: 3px;
+	letter-spacing: 3px;
 }
 #select_div {
 	display: flex;
