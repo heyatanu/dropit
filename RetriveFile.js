@@ -77,9 +77,9 @@ function onofffun() {
   var status = navigator.onLine;
   if (status) {
     // console.log("ON")
-    document.getElementById("search-file-status").innerText = "Wait we are checking"
+    // document.getElementById("search-file-status").innerText = "Wait we are checking"
   } else {
     // console.log("off");
-    document.getElementById("search-file-status").innerText = "network lost"
+    // document.getElementById("search-file-status").innerText = "network lost"
   }
 }

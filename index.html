@@ -8,11 +8,14 @@
 	<link rel="icon" href="Images/logo.ico">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css"> </head>
+	<link rel="stylesheet" href="./Responsive.css"> </head>
 
 <body>
 	<div id="overlayforurldownload"><img id="overlayforurldownload-img" src="./Images/Loading/loading.gif" alt=""> 
 		<div class="text-center">
-		<a id="overlayforurldownload-a" class="btn btn-primary disabled" href="" >loading . .</a>
+		<a id="overlayforurldownload-a" class="btn btn-dark disabled btn-lg" href="" >loading . .</a>
+		<br>
+		<a id="overlayforurldownload-dropit" class="btn btn-success" href="" >HOME </a>
 		  </div>
 		<p  id="overlayforurldownload-p">wait we are checking</p>
 	 </div>
@@ -64,7 +67,7 @@
 						<p id="search-file-id">ID</p>
 						<p id="search-file-name">FileName</p> <img src="./Images/FileIcons/file.png" alt="upload gif" id="search-file-type">
 						<p id="search-file-status">Status</p>
-						<div id="download-btn-div"> <img src="./Images/Loading/Waiting.gif" alt="find gif" id="download-btn-img"> <a class="btn btn-success disabled" target="_blank" href="" id="download-btn">Download File <span class="glyphicon glyphicon-circle-arrow-down"></span></a> </div>
+						<div id="download-btn-div"> <img src="./Images/Loading/Waiting.gif" alt="find gif" id="download-btn-img"> <a class="btn btn-success disabled" href="" id="download-btn">Download File <span class="glyphicon glyphicon-circle-arrow-down"></span></a> </div>
 					</div>
 				</div>
 			</div>
@@ -91,12 +94,12 @@
 			</div>
 		</div>
 	</div>
-	<button type="button" style="display: none;" data-toggle="modal" data-target="#fromlinknotfound" id="fromlinkbtn">Open Modal</button>
+	<button type="button" style="display: none;" data-toggle="modal" data-target="#onlineoroffline" id="onlinorofflineid">Open Modal</button>
 	<div class="container">
-		<div class="modal fade" id="fromlinknotfound" role="dialog">
+		<div class="modal fade" id="onlineoroffline" role="dialog">
 			<div class="modal-dialog">
 				<div class="alert alert-danger alert-dismissible" id="fromurldib"> <a class="close" data-dismiss="modal" aria-label="close">&times;</a>
-					<p><strong id="link-status-txt">Check the 'Retrive File' section</strong></p>
+					<p><strong id="link-status-txt">connection lost</strong></p>
 				</div>
 			</div>
 		</div>
@@ -114,6 +117,7 @@
 	<script src="./RetriveFile.js"></script>
 	<script src="./ShowAll.js"></script>
 	<script src="./FromUrlOpen.js"></script>
+	<script src="./onlineORoffline.js"></script>
 </body>
 
 </html>

@@ -23,8 +23,8 @@ button {
 #overlayforurldownload {
 	position: fixed;
 	display: none;
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: 100vh;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -40,11 +40,17 @@ button {
 	letter-spacing: 2px;
 	text-transform: uppercase;
 }
+#overlayforurldownload-dropit{
+	margin-bottom: 20px;
+	font-weight: 500;
+	letter-spacing: 2px;
+	/* text-transform: uppercase; */
+}
 #overlayforurldownload>img {
 	width: 20%;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 15%;
+	margin-top: 11%;
 	display: block;
 	overflow: hidden;
 }

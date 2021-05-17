@@ -53,7 +53,7 @@ document.getElementById("show").onclick = function() {
         <p id="ret-file-status">` + childSnapshot.val().UploadTime + `</p>
         <div id="ret-download-btn">
             <img src="./Images/Loading/uplodeComplate.gif" id="ret-download-btn-img" alt="upload gif">
-            <a  class="btn btn-success" target="_blank" href="` + filelink + `" >Download File</a>
+            <a  class="btn btn-success" href="` + filelink + `" >Download File</a>
         </div>
     </div>
         `;
@@ -112,10 +112,12 @@ function onofffun() {
   var status = navigator.onLine;
   if (status) {
     // console.log("ON from all")
-    document.getElementById("checkpass_sts").innerHTML = "wait we are fetching data"
+    // document.getElementById("checkpass_sts").innerHTML = "wait we are fetching data"
   } else {
     // console.log("off from all");
-    document.getElementById("checkpass_sts").innerHTML = "network lost waiting for network"
+    // document.getElementById("checkpass_sts").innerHTML = "network lost waiting for network"
 
   }
 }
+
+

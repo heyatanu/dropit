@@ -158,17 +158,17 @@ function onofffun() {
   var status = navigator.onLine;
   if (status) {
     // console.log("ON")
-    document.getElementById("fileaccessid").innerHTML = "Wait we are uploading the file"
-    document.getElementById("uploading-img").src = './Images/Loading/uploadinggif.gif'
-    document.getElementById("uplodeprogrssbar").classList.remove("progress-bar-danger");
-    document.getElementById("uplodeprogrssbar").classList.add("progress-bar-success");
-    document.getElementById("show-info-status").innerHTML = "uploading";
+    // document.getElementById("fileaccessid").innerHTML = "Wait we are uploading the file"
+    // document.getElementById("uploading-img").src = './Images/Loading/uploadinggif.gif'
+    // document.getElementById("uplodeprogrssbar").classList.remove("progress-bar-danger");
+    // document.getElementById("uplodeprogrssbar").classList.add("progress-bar-success");
+    // document.getElementById("show-info-status").innerHTML = "uploading";
   } else {
     // console.log("off");
-    document.getElementById("fileaccessid").innerHTML = "network lost looking for network"
-    document.getElementById("uploading-img").src = './Images/Loading/wifi.png'
-    document.getElementById("uplodeprogrssbar").classList.remove("progress-bar-success");
-    document.getElementById("uplodeprogrssbar").classList.add("progress-bar-danger");
-    document.getElementById("show-info-status").innerHTML = "uploading pause";
+    // document.getElementById("fileaccessid").innerHTML = "network lost looking for network"
+    // document.getElementById("uploading-img").src = './Images/Loading/wifi.png'
+    // document.getElementById("uplodeprogrssbar").classList.remove("progress-bar-success");
+    // document.getElementById("uplodeprogrssbar").classList.add("progress-bar-danger");
+    // document.getElementById("show-info-status").innerHTML = "uploading pause";
   }
 }
