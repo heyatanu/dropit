@@ -111,7 +111,6 @@ document.getElementById("upload").onclick = function() {
                 // document.getElementById("gogo").value = ImgUrl;
                 document.getElementById("copy_txt").innerHTML = url;
                 document.getElementById("gogo").value = url;
-                document.getElementById("alertopenlink").href = ImgUrl;
                 document.getElementById("uploading-img").src = './Images/Loading/uplodeComplate.gif'
                 document.getElementById('upload').disabled = true;
                 document.getElementById('copylink').disabled = false;

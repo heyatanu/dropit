@@ -9,19 +9,29 @@ document.getElementById("retrieve").onclick = function() {
         document.getElementById("download-btn-img").src = "./Images/Loading/uploadinggif.gif";
 
         firebase.database().ref('Picture/' + ImgName).on('value', function(snapshot) {
-            if (snapshot.val() != null) {
-                document.getElementById("download-btn").classList.remove("disabled");
-                getname = snapshot.val().Name;
-                let extention = getname.split('.').pop();
-                getname = getname.replace(/\.[^/.]+$/, "")
-                let finalname = getname + "." + extention;
-                document.getElementById("search-file-id").innerHTML = getname;
-                document.getElementById("search-file-name").innerHTML = snapshot.val().LocalFileName;
-                let iconname = fileiconchoose(extention);
-                document.getElementById("search-file-type").src = "./Images/FileIcons/" + iconname + ".png";
-                document.getElementById("search-file-status").innerText = snapshot.val().UploadTime;
-                document.getElementById("download-btn-img").src = './Images/Loading/uplodeComplate.gif';
-                document.getElementById("download-btn").href = snapshot.val().Link;
+            if (snapshot.val() != null ) {
+                if (snapshot.val().IsAlreadyDownloaded==true && snapshot.val().DeleteOnDownload==true){
+                    document.getElementById("download-btn").classList.add("disabled");
+                    document.getElementById("search-file-id").innerHTML = ImgName;
+                    document.getElementById("search-file-name").innerHTML = "NOT FOUND";
+                    document.getElementById("search-file-status").innerText = "Check the ID"
+                    document.getElementById("search-file-type").src = "./Images/Loading/wrong.png";
+                    document.getElementById("download-btn-img").src = "./Images/Loading/wrong.png";
+                }
+                else{
+                    document.getElementById("download-btn").classList.remove("disabled");
+                    getname = snapshot.val().Name;
+                    let extention = getname.split('.').pop();
+                    getname = getname.replace(/\.[^/.]+$/, "")
+                    let finalname = getname + "." + extention;
+                    document.getElementById("search-file-id").innerHTML = getname;
+                    document.getElementById("search-file-name").innerHTML = snapshot.val().LocalFileName;
+                    let iconname = fileiconchoose(extention);
+                    document.getElementById("search-file-type").src = "./Images/FileIcons/" + iconname + ".png";
+                    document.getElementById("search-file-status").innerText = snapshot.val().UploadTime;
+                    document.getElementById("download-btn-img").src = './Images/Loading/uplodeComplate.gif';
+                    document.getElementById("download-btn").href = snapshot.val().Link;
+                }
             } else {
                 // console.log("FROM ELSE")
                 document.getElementById("download-btn").classList.add("disabled");
