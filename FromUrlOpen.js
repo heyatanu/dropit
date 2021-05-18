@@ -3,7 +3,7 @@ var url = new URL(url_string);
 var id = url.searchParams.get("id");
 let search = url.search
 let slicestr = search.slice(1, 3)
-
+let localfilename="";
 if (search.includes(",") || slicestr != "id" && search != "") {
     document.getElementById("link-status-txt").innerHTML = "Wrong URL, URL should be " + url.origin + "/?id=your ID"
     document.getElementById("fromlinkbtn").click()
@@ -15,6 +15,7 @@ if (search.includes(",") || slicestr != "id" && search != "") {
     firebase.database().ref('Picture/' + id).on('value', function(snapshot) {
 
         if (snapshot.val() != null) {
+        	localfilename=snapshot.val().LocalFileName;
                 let aclink = (snapshot.val().Link);
                 document.getElementById("overlayforurldownload-img").src = './Images/Loading/download.gif';
                 document.getElementById("overlayforurldownload-a").classList.remove("disabled");
@@ -22,7 +23,7 @@ if (search.includes(",") || slicestr != "id" && search != "") {
                 document.getElementById("overlayforurldownload-a").classList.add("btn-primary");
                 document.getElementById("overlayforurldownload-a").innerHTML = "download now";
                 document.getElementById("overlayforurldownload-a").href = aclink;
-                document.getElementById("overlayforurldownload-p").innerHTML = "ready for download";
+                document.getElementById("overlayforurldownload-p").innerHTML = localfilename+" ready for download";
                 document.getElementById('overlayforurldownload-a').ondragstart = function() { return false; };
                 document.getElementById("overlayforurldownload-a").onclick = function() {
                     
