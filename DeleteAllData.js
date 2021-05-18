@@ -30,7 +30,7 @@ function DeleteAllDate() {
 }
 
 DeleteAllDate()
-// document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener('contextmenu', event => event.preventDefault());
 document.ondragstart = function() { return false; };
 document.getElementById("download-btn").addEventListener('contextmenu', event => event.preventDefault());
 document.getElementById("download-btn").onclick = function() {
