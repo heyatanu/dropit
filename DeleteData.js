@@ -68,4 +68,3 @@ function funcall(b,c){
 } 
 
 console.disableYellowBox = true;
-console.reportErrorsAsExceptions = false;
