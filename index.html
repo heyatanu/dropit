@@ -51,6 +51,7 @@
 								<input id="gogo" style="display:block;height: 0;opacity: 0;" readonly> </div>
 							<div id="btncopy" class="col-lg-1">
 								<button id="copylink" class="btn btn-primary" onclick="copylinkfun()" data-toggle="modal" data-target="#myModal" disabled><span class="glyphicon glyphicon-copy"></span></button>
+								<button id="sharelink" style="margin-top:5px;" class="btn btn-success" onclick="sharelinkfun()" disabled><span class="glyphicon glyphicon-share-alt"></span></button>
 							</div>
 						</div>
 					</div>
@@ -88,7 +89,7 @@
 							<p id="ret-file-id">ID</p>
 							<p id="ret-file-name">FileName</p>
 							<p id="ret-file-status">Status</p>
-							<div id="ret-download-btn"> <img src="./Images/Loading/Waiting.gif" id="ret-download-btn-img" alt="upload gif"> <a class="btn btn-success" href="` + filelink + `" id="showalldownloadbtn" disabled >Download File</a> </div>
+							<div id="ret-download-btn"> <img src="./Images/Loading/Waiting.gif" id="ret-download-btn-img" alt="upload gif"> <a class="btn btn-success disabled " href="` + filelink + `" id="showalldownloadbtn" >Download File</a> </div>
 						</div>
 					</div>
 				</div>

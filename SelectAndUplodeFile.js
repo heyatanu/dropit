@@ -6,9 +6,13 @@ let selectfilename = "";
 var dateobj = new Date();
 let uplodedate = "";
 let deleteon1stdownload = false;
+let sharetext=``;
+let shareurl="";
+
 //----------------------SELECT THE IMAGE---------------//
 
 document.getElementById("select").onclick = function(e) {
+    document.getElementById('for-delete-checkbox').checked = false;
     document.getElementById("uplodeprogrssbar").innerHTML = "Waiting for upload";
     document.getElementById("fileaccessid").innerHTML = "Your File Access ID Will Appare Here";
     document.getElementById("copy_txt").innerHTML = "Your access link will appare here";
@@ -56,6 +60,7 @@ document.getElementById("select").onclick = function(e) {
 
 //----------------------UPLOAD THE IMAGE---------------//
 document.getElementById("upload").onclick = function() {
+
     document.getElementById("select").disabled = true;
     document.getElementById("uploading-img").src = './Images/Loading/uploadinggif.gif'
     document.getElementById("uplodeprogrssbar").classList.remove("progress-bar-primary");
@@ -104,6 +109,7 @@ document.getElementById("upload").onclick = function() {
                 // let ud=dateobj.getDate
                 // console.log(uplodedate) 
                 var url = new URL(url_string);
+                var forsharelinkurl=url.href;
                 url = url.href + "?id=" + randomid;
                 document.getElementById("uplodeprogrssbar").innerHTML = "Upload Complete";
                 document.getElementById("fileaccessid").innerHTML = "your file access id for " + selectfilename + " is " + randomid + " or copy the below link";
@@ -127,6 +133,24 @@ document.getElementById("upload").onclick = function() {
                 document.getElementById("uplodeprogrssbar").classList.add("progress-bar-primary");
                 files = []
                 document.getElementById("select").disabled = false;
+                document.getElementById("sharelink").disabled = false;
+                document.getElementById('for-delete-checkbox').disabled = true;
+                if (deleteon1stdownload){
+                    sharetext=`Hey 🤩 i want to share 🍕 with you the file `+selectfilename+`.`+
+                    ` This file access 🚩🚩 ID is `+randomid+`.`+
+                    ` 🚧 ⚠ Make sure that you can download the file only once ⚠ 🚧.`+
+                    ` ⚠ ♻ Later you can't access the file ♻ ⚠.`+
+                    ` Checkout the lattest file shareing site `+forsharelinkurl+`.`+
+                    ` Click on the below link to download ✔ `;
+                    shareurl=url;
+                }
+                else{
+                    sharetext="Hey 🤩 i want to share 🍕 with you the file "+selectfilename+"."+
+                    " This file access 🚩🚩 ID is "+randomid+"."+
+                    " Checkout the lattest file shareing site "+forsharelinkurl+"."+
+                    " Click on the below link to download ✔ ";
+                    shareurl=url;
+                }
             });
         });
 
@@ -169,4 +193,22 @@ function copylinkfun() {
     copyText.setSelectionRange(0, 99999)
     document.execCommand("copy");
     // alert("Copied the text: " + copyText.value);
+}
+
+function sharelinkfun(){
+    if (navigator.share) {
+        navigator.share({
+                text:sharetext,
+                url: shareurl
+            }).then(() => {
+                // console.log('Thanks for sharing!');
+            })
+            .catch(err => {
+                alert(`Couldn't share because of`, err.message);
+            });
+    } else {
+        $('#share_modal').modal('toggle');
+        alert('Web share not supported');
+    }
+
 }
