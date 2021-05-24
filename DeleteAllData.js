@@ -5,8 +5,10 @@ let trueorfalse = false;
 
 function DeleteAllDate() {
     firebase.database().ref('Picture/').once('value', function(snapshot) {
+    	console.log(snapshot.val()==null)
         snapshot.forEach(function(childSnapshot) {
-            filename = (childSnapshot.val().Name)
+        	if (childSnapshot.val()!=null){
+        		            filename = (childSnapshot.val().Name)
             fileextention = filename.split('.').pop();
             fileid = filename.replace(/\.[^/.]+$/, "")
             trueorfalse = childSnapshot.val().DeleteOnDownload;
@@ -22,6 +24,7 @@ function DeleteAllDate() {
                 firebase.database().ref('Picture/' + fileid).remove();
 
             }
+        	}
         });
 
     });
@@ -38,3 +41,9 @@ document.getElementById("download-btn").onclick = function() {
         IsAlreadyDownloaded: true
     });
 }
+
+
+setTimeout(function(){console.clear();}, 5000);
+
+
+setInterval(function(){ console.clear();}, 8000);
