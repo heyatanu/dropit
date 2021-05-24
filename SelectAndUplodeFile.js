@@ -8,7 +8,8 @@ let uplodedate = "";
 let deleteon1stdownload = false;
 let sharetext=``;
 let shareurl="";
-
+let titleurl="";
+ 
 //----------------------SELECT THE IMAGE---------------//
 
 document.getElementById("select").onclick = function(e) {
@@ -110,6 +111,7 @@ document.getElementById("upload").onclick = function() {
                 // console.log(uplodedate) 
                 var url = new URL(url_string);
                 var forsharelinkurl=url.href;
+                titleurl=forsharelinkurl;
                 url = url.href + "?id=" + randomid;
                 document.getElementById("uplodeprogrssbar").innerHTML = "Upload Complete";
                 document.getElementById("fileaccessid").innerHTML = "your file access id for " + selectfilename + " is " + randomid + " or copy the below link";
@@ -136,10 +138,10 @@ document.getElementById("upload").onclick = function() {
                 document.getElementById("sharelink").disabled = false;
                 document.getElementById('for-delete-checkbox').disabled = true;
                 if (deleteon1stdownload){
-                    sharetext=`Hey 🤩 i want to share 🍕 with you the file `+selectfilename+`.`+
-                    ` This file access 🚩🚩 ID is `+randomid+`.`+
-                    ` 🚧 ⚠ Make sure that you can download the file only once ⚠ 🚧.`+
-                    ` ⚠ ♻ Later you can't access the file ♻ ⚠.`+
+                    sharetext=`File Name:-   `+selectfilename+`.`+
+                    `File access 🚩🚩 ID is `+randomid+`.`+
+                    ` 🚧 ⚠ MAKE SURE THAT YOU CAN DOWNLOAD THE FILE ONLY ONCE ⚠ 🚧.  `+
+                        ` ⚠ ♻ LATER THIS FILE IS AUTOMATICLY DELETED ♻ ⚠. `+
                     ` Checkout the lattest file shareing site `+forsharelinkurl+`.`+
                     ` Click on the below link to download ✔ `;
                     shareurl=url;
@@ -198,6 +200,7 @@ function copylinkfun() {
 function sharelinkfun(){
     if (navigator.share) {
         navigator.share({
+            title: 'DropIT Share('+titleurl+')',
                 text:sharetext,
                 url: shareurl
             }).then(() => {
