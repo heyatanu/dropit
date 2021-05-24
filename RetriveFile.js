@@ -39,20 +39,20 @@ document.getElementById("retrieve").onclick = function() {
                     if (snapshot.val().DeleteOnDownload==true){
 
                         sharetext=`#------------DropIT Share------------#`+
-                        `                                                                             >File Name:-   `+snapshot.val().LocalFileName+`.`+
-                        `                                                                             >File access 🚩🚩 ID is `+ImgName+`.`+
-                        `                                                                             > 🚧 ⚠ MAKE SURE THAT YOU CAN DOWNLOAD THE FILE ONLY ONCE ⚠ 🚧.  `+
-                        `                                                                              >⚠ ♻ LATER THIS FILE IS AUTOMATICLY DELETED ♻ ⚠. `+
-                        `                                                                             > Checkout the lattest file shareing site DropIT   `+forsharelinkurl+`.`+
-                        `                                                                             > Click on the below link to download ✔`;
+                        `<---------------- File Name:-   `+snapshot.val().LocalFileName+` ---------------->`+
+                        `<---------------- File access 🚩🚩 ID is `+ImgName+`.`+
+                        `<----------------  🚧 ⚠ MAKE SURE THAT YOU CAN DOWNLOAD THE FILE ONLY ONCE ⚠ 🚧  ---------------->`+
+                        `<----------------  ⚠ ♻ LATER THIS FILE IS AUTOMATICLY DELETED ♻ ⚠  ---------------->`+
+                        `<----------------  Checkout the lattest file shareing site DropIT   `+forsharelinkurl+`  ---------------->`+
+                        `<----------------  Click on the below link to download ✔ >>>>>>`;
 
                     }
                     else{
                         sharetext=`#------------DropIT Share------------#`+
-                        `                                                                             >File Name:-   `+snapshot.val().LocalFileName+`.`+
-                        `                                                                             >File access 🚩🚩 ID is `+ImgName+`.`+
-                        `                                                                              >Checkout the lattest file shareing site DropIT    `+forsharelinkurl+`.`+
-                        `                                                                             > Click on the below link to download ✔  `;
+                        `<---------------- File Name:-   `+snapshot.val().LocalFileName+`  ---------------->`+
+                        `<---------------- File access 🚩🚩 ID is `+ImgName+`  ---------------->`+
+                        ` <---------------- Checkout the lattest file shareing site DropIT    `+forsharelinkurl+`  ---------------->`+
+                        `<---------------- Click on the below link to download ✔ >>>>>>>> `;
                         shareurl=url;
                     }
                 }

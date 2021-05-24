@@ -139,20 +139,20 @@ document.getElementById("upload").onclick = function() {
                 document.getElementById('for-delete-checkbox').disabled = true;
                 if (deleteon1stdownload){
                     sharetext=`#------------DropIT Share------------#`+
-                    `                                                                             >File Name:-   `+selectfilename+`.`+
-                    `                                                                             >File access 🚩🚩 ID is `+randomid+`.`+
-                    `                                                                             > 🚧 ⚠ MAKE SURE THAT YOU CAN DOWNLOAD THE FILE ONLY ONCE ⚠ 🚧.  `+
-                        `                                                                             > ⚠ ♻ LATER THIS FILE IS AUTOMATICLY DELETED ♻ ⚠. `+
-                    `                                                                              > the lattest file shareing site `+forsharelinkurl+`.`+
-                    `                                                                              >Click on the below link to download ✔ `;
+                    `<----------------File Name:-   `+selectfilename+`---------------->`+
+                    `<----------------File access 🚩🚩 ID is `+randomid+`---------------->`+
+                    `<---------------- 🚧 ⚠ MAKE SURE THAT YOU CAN DOWNLOAD THE FILE ONLY ONCE ⚠ 🚧  ---------------->`+
+                        `<---------------- ⚠ ♻ LATER THIS FILE IS AUTOMATICLY DELETED ♻ ⚠ ---------------->`+
+                    `<---------------- Checkout the lattest file shareing site `+forsharelinkurl+` ---------------->`+
+                    `<---------------- Click on the below link to download ✔ >>>>>>`;
                     shareurl=url;
                 }
                 else{
                                             sharetext=`#------------DropIT Share------------#`+
-                        `                                                                             >File Name:-   `+selectfilename+`.`+
-                        `                                                                             >File access 🚩🚩 ID is `+randomid+`.`+
-                        `                                                                              >Checkout the lattest file shareing site DropIT    `+forsharelinkurl+`.`+
-                        `                                                                             > Click on the below link to download ✔  `;
+                        `<---------------- File Name:-   `+selectfilename+`---------------->`+
+                        `<---------------- File access 🚩🚩 ID is `+randomid+`  ---------------->`+
+                        `<---------------- Checkout the lattest file shareing site DropIT    `+forsharelinkurl+` ---------------->`+
+                        `<----------------  Click on the below link to download ✔  >>>>>>>>>`;
 
                     shareurl=url;
                 }
