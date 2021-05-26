@@ -117,6 +117,7 @@ document.getElementById("upload").onclick = function() {
                 document.getElementById("fileaccessid").innerHTML = "your file access id for " + selectfilename + " is " + randomid + " or copy the below link";
                 // document.getElementById("copy_txt").innerHTML = ImgUrl;
                 // document.getElementById("gogo").value = ImgUrl;
+                document.getElementById("qr-text").value=url;
                 document.getElementById("copy_txt").innerHTML = url;
                 document.getElementById("gogo").value = url;
                 document.getElementById("uploading-img").src = './Images/Loading/uplodeComplate.gif'
@@ -136,6 +137,7 @@ document.getElementById("upload").onclick = function() {
                 files = []
                 document.getElementById("select").disabled = false;
                 document.getElementById("sharelink").disabled = false;
+                document.getElementById("qrshare").disabled = false;
                 document.getElementById('for-delete-checkbox').disabled = true;
                 if (deleteon1stdownload){
                     sharetext=`#------------DropIT Share------------#`+
@@ -193,6 +195,11 @@ function fileiconchoose(ex) {
 //BUTTON CLICK LINK COPY
 
 function copylinkfun() {
+    document.getElementById("myModal").innerHTML=`
+    <div class="modal-dialog">
+    <div class="alert alert-success alert-dismissible"> <a class="close" data-dismiss="modal" aria-label="close">&times;</a> <strong>Success!</strong> Link copied to clipboard</div>
+</div>
+    `;
     var copyText = document.getElementById("gogo");
     copyText.select();
     copyText.setSelectionRange(0, 99999)
@@ -210,7 +217,7 @@ function sharelinkfun(){
                 // console.log('Thanks for sharing!');
             })
             .catch(err => {
-                alert(`Couldn't share because of`, err.message);
+                alert(`Couldn't share because of some error`);
             });
     } else {
         $('#share_modal').modal('toggle');

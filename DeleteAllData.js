@@ -5,7 +5,7 @@ let trueorfalse = false;
 
 function DeleteAllDate() {
     firebase.database().ref('Picture/').once('value', function(snapshot) {
-    	console.log(snapshot.val()==null)
+    	// console.log(snapshot.val()==null)
         snapshot.forEach(function(childSnapshot) {
         	if (childSnapshot.val()!=null){
         		            filename = (childSnapshot.val().Name)

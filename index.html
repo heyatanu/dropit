@@ -11,8 +11,15 @@
 <link rel="stylesheet" href="./Responsive.css"> </head>
 
 <body>
+	<!-- QRCODE -->
+	<input id="qr-text" type="text" readonly style="display: none;"/>
+
+
+
+	<!-- QRCODE -->
+
 	<div id="overlayforurldownload"><img id="overlayforurldownload-img" src="./Images/Loading/loading.gif" alt="">
-		<div class="text-center"> <a id="overlayforurldownload-a" class="btn btn-dark disabled btn-lg" href="">loading . .</a>
+		<div class="text-center" > <a id="overlayforurldownload-a" class="btn btn-dark disabled btn-lg" href="">loading . .</a>
 			<br> <a id="overlayforurldownload-dropit" class="btn btn-success" href="">HOME </a> </div>
 		<p id="overlayforurldownload-p">wait we are checking</p>
 	</div>
@@ -40,6 +47,9 @@
 							<label class="form-check-label" id="for-delete-sts"> waiting for file </label>
 						</div>
 					</div>
+					<div class="well well-sm" id="for-delete-div">
+						
+					</div>
 					<div class="well well-sm" id="upload-complete-div">
 						<div class="progress" id="div_uplodeprogrssbar">
 							<div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" id="uplodeprogrssbar"> Waiting for upload </div>
@@ -52,6 +62,7 @@
 							<div id="btncopy" class="col-lg-1">
 								<button id="copylink" class="btn btn-primary" onclick="copylinkfun()" data-toggle="modal" data-target="#myModal" disabled><span class="glyphicon glyphicon-copy"></span></button>
 								<button id="sharelink" style="margin-top:5px;" class="btn btn-success" onclick="sharelinkfun()" disabled><span class="glyphicon glyphicon-share-alt"></span></button>
+								<button id="qrshare" style="margin-top:5px;" class="btn btn-success" onclick="linkqrgen()"disabled data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-qrcode"></span></button>
 							</div>
 						</div>
 					</div>
@@ -137,6 +148,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 	<script src="./InitializeFirebase.js"></script>
 	<script src="./SelectAndUplodeFile.js"></script>
 	<script src="./RetriveFile.js"></script>
@@ -144,6 +156,19 @@
 	<script src="./FromUrlOpen.js"></script>
 	<script src="./DeleteData.js"></script>
 	<script src="./DeleteAllData.js"></script>
+	<script src="./QrcodeGen.js"></script>
 </body>
 
 </html>
+
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-body">
+		<p>Modal body text goes here.</p>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-primary">Save changes</button>
+		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	  </div>
+	</div>
+  </div>
