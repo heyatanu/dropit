@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Forgot Access ID</title>
+	<link rel="icon" href="./logo.ico">
+        <link rel="stylesheet" href="style.css" />
+        <script src="script.js" defer></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="quiz-container" id="quiz">
+            <div class="quiz-header">
+                  <form id="mainform" style="display: block;" onsubmit="return checkdatabase()">
+                <h2 id="question">find your access id</h2>
+                    <div class="row" id="pass-main-div">
+                      <div class="col" style="margin-bottom: 7px;">
+                        <input type="password" class="form-control" placeholder="Password here" id="password" required>
+                      </div>
+                      <div class="col">
+                        <input type="text" class="form-control" placeholder="File extention here (gif,jpg,mp3 etc)" id="exten" required>
+                      </div>
+                    </div>
+                    <input type="submit" style="display: none;" id="main-submit">
+                  </form>
+                  <img src="./load.gif" style="margin-left: auto; margin-right: auto; display: none;" id="loader">
+            <div class="well well-lg text-center" style="display:none;margin: 0;border: 4px dashed;" id="forgot-status">not found</div>
+
+            </div>
+            <button id="outsubmit" onclick=" checkdatabase()">Check</button>
+        </div>
+    </body>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+	<script src="./../InitializeFirebase.js"></script>
+    <script src="./forgotcheckdatabse.js"></script>
+
+</html>

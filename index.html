@@ -13,9 +13,6 @@
 <body>							
 	<!-- QRCODE -->
 	<input id="qr-text" type="text" readonly style="display: none;"/>
-
-
-
 	<!-- QRCODE -->
 
 	<div id="overlayforurldownload"><img id="overlayforurldownload-img" src="./Images/Loading/loading.gif" alt="">
@@ -47,8 +44,9 @@
 							<label class="form-check-label" id="for-delete-sts"> waiting for file </label>
 						</div>
 					</div>
-					<div class="well well-sm" id="for-delete-div">
-						
+					<div class="well well-sm" style="display: flex;" id="password">
+							<input type="password" class="form-control" id="user-password" placeholder="Waiting For File" readonly >
+							<button style="outline: none;background-color: white;" class="btn btn-default" id="eye-btn" onclick="showorhisepass()" disabled><span id="eye-span" class="glyphicon glyphicon-eye-close"></span></button>
 					</div>
 					<div class="well well-sm" id="upload-complete-div">
 						<div class="progress" id="div_uplodeprogrssbar">
@@ -75,6 +73,15 @@
 				</div>
 			</div>
 		</div>
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Forgot Access ID</div>
+				<div class="panel-body">
+					<a class="btn btn-block btn-danger" href="./ForgotAccessID/">Get your access ID here</a>
+				</div>
+			</div>
+		</div>
+
 		<div class="panel-group">
 			<div class="panel panel-primary">
 				<div class="panel-heading">Retrive File</div>
@@ -168,6 +175,7 @@
 	<script src="./DeleteData.js"></script>
 	<script src="./DeleteAllData.js"></script>
 	<script src="./QrcodeGen.js"></script>
+	<script src="./ShowOrHidePass.js"></script>
 </body>
 
 </html>
