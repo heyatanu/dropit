@@ -50,7 +50,7 @@ document.getElementById("retrieve").onclick = function() {
                     document.getElementById("search-file-status").innerText = snapshot.val().UploadTime;
                     document.getElementById("download-btn-img").src = './Images/Loading/uplodeComplate.gif';
                     document.getElementById("download-btn").href = snapshot.val().Link;
-                    document.getElementById("share-btn").disabled = false;
+                    
                     if (snapshot.val().DeleteOnDownload==true){
 
                         sharetext=`#------------DropIT Share------------#`+

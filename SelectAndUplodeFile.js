@@ -26,7 +26,7 @@ document.getElementById("select").onclick = function(e) {
     input.type = 'file';
     input.onchange = e => {
         document.getElementById('uplode_btn_img').src = './Images/Loading/ready.gif';
-        document.getElementById('uplode_btn_img').style.width = "9%";
+        // document.getElementById('uplode_btn_img').style.width = "9%";
         document.getElementById("show-info-status").innerHTML = "ready for upload";
         files = e.target.files;
         reader = new FileReader();
@@ -203,6 +203,7 @@ function copylinkfun() {
     <div class="alert alert-success alert-dismissible"> <a class="close" data-dismiss="modal" aria-label="close">&times;</a> <strong>Success!</strong> Link copied to clipboard</div>
 </div>
     `;
+    // alert("")
     var copyText = document.getElementById("gogo");
     copyText.select();
     copyText.setSelectionRange(0, 99999)
@@ -220,11 +221,11 @@ function sharelinkfun(){
                 // console.log('Thanks for sharing!');
             })
             .catch(err => {
-                alert(`Couldn't share because of some error`);
+                console.log(`Couldn't share because of some error`);
             });
     } else {
         $('#share_modal').modal('toggle');
-        alert('Web share not supported');
+        console.log('Web share not supported');
     }
 
 }
