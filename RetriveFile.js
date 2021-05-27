@@ -1,5 +1,6 @@
 //-----------------------RETRIVE ------------//
 let getname = "";
+var x, i;
 document.getElementById("retrieve").onclick = function() {
     ImgName = document.getElementById("namebox").value;
     ImgName = ImgName.trim();
@@ -17,12 +18,26 @@ document.getElementById("retrieve").onclick = function() {
                     document.getElementById("search-file-status").innerText = "Check the ID"
                     document.getElementById("search-file-type").src = "./Images/Loading/wrong.png";
                     document.getElementById("download-btn-img").src = "./Images/Loading/wrong.png";
+
+                    x = document.querySelectorAll(".retriveallsharebtn");
+                    for (i = 0; i < x.length; i++) {
+                      x[i].classList.add("disabled");
+                    }
                 }
                 else{
                     var url = new URL(url_string);
                     var forsharelinkurl=url.href;
                     titleurl=forsharelinkurl;
                     url = url.href + "?id=" + ImgName;
+                    document.getElementById("gogo").value=url;
+                    document.getElementById("qr-text").value=url;
+                    filenameforqr=snapshot.val().LocalFileName+"-"+ImgName;
+                    // document.getElementsByClassName("datat").classList.add("disabled");
+                    x = document.querySelectorAll(".retriveallsharebtn");
+                    for (i = 0; i < x.length; i++) {
+                      x[i].classList.remove("disabled");
+                    }
+
                     document.getElementById("download-btn").classList.remove("disabled");
                     getname = snapshot.val().Name;
                     let extention = getname.split('.').pop();
@@ -64,6 +79,11 @@ document.getElementById("retrieve").onclick = function() {
                 document.getElementById("search-file-status").innerText = "Check the ID"
                 document.getElementById("search-file-type").src = "./Images/Loading/wrong.png";
                 document.getElementById("download-btn-img").src = "./Images/Loading/wrong.png";
+                
+                x = document.querySelectorAll(".retriveallsharebtn");
+                for (i = 0; i < x.length; i++) {
+                  x[i].classList.add("disabled");
+                }
             }
 
         });
@@ -94,7 +114,7 @@ function fileiconchoose(ex) {
         return ("apk")
     } else if (ex == "rar" || ex == "zip" || ex == "jar") {
         return ("zip")
-    } else if (ex == "c" || ex == "cpp" || ex == "java" || ex == "py" || ex == "html" || ex == "css" || ex == "scss" || ex == "js" || ex == "cs" || ex == "rb" || ex == "php" || ex == "sql" || ex == "mysql" || ex == "pl") {
+    } else if (ex == "c" || ex == "cpp" || ex == "java" || ex == "py" || ex == "html"||ex == "txt" || ex == "css" || ex == "scss" || ex == "js" || ex == "cs" || ex == "rb" || ex == "php" || ex == "sql" || ex == "mysql" || ex == "pl") {
         return ("code")
     } else {
         return ("file")

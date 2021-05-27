@@ -97,7 +97,7 @@ function fileiconchoose(ex) {
         return ("apk")
     } else if (ex == "rar" || ex == "zip" || ex == "jar") {
         return ("zip")
-    } else if (ex == "c" || ex == "cpp" || ex == "java" || ex == "py" || ex == "html" || ex == "css" || ex == "scss" || ex == "js" || ex == "cs" || ex == "rb" || ex == "php" || ex == "sql" || ex == "mysql" || ex == "pl") {
+    } else if (ex == "c" || ex == "cpp" || ex == "java" || ex == "py" ||ex == "html"|| ex == "html" || ex == "css" || ex == "scss" || ex == "js" || ex == "cs" || ex == "rb" || ex == "php" || ex == "sql" || ex == "mysql" || ex == "pl") {
         return ("code")
     } else {
         return ("file")

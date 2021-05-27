@@ -13,6 +13,8 @@ let titleurl="";
 //----------------------SELECT THE IMAGE---------------//
 
 document.getElementById("select").onclick = function(e) {
+    document.getElementById("sharelink").disabled = true;
+    document.getElementById("qrshare").disabled = true;
     document.getElementById('for-delete-checkbox').checked = false;
     document.getElementById("uplodeprogrssbar").innerHTML = "Waiting for upload";
     document.getElementById("fileaccessid").innerHTML = "Your File Access ID Will Appare Here";
@@ -115,6 +117,7 @@ document.getElementById("upload").onclick = function() {
                 url = url.href + "?id=" + randomid;
                 document.getElementById("uplodeprogrssbar").innerHTML = "Upload Complete";
                 document.getElementById("fileaccessid").innerHTML = "your file access id for " + selectfilename + " is " + randomid + " or copy the below link";
+                filenameforqr=selectfilename+"-"+randomid;
                 // document.getElementById("copy_txt").innerHTML = ImgUrl;
                 // document.getElementById("gogo").value = ImgUrl;
                 document.getElementById("qr-text").value=url;
@@ -185,7 +188,7 @@ function fileiconchoose(ex) {
         return ("apk")
     } else if (ex == "rar" || ex == "zip" || ex == "jar") {
         return ("zip")
-    } else if (ex == "c" || ex == "cpp" || ex == "java" || ex == "py" || ex == "html" || ex == "css" || ex == "scss" || ex == "js" || ex == "cs" || ex == "rb" || ex == "php" || ex == "sql" || ex == "mysql" || ex == "pl") {
+    } else if (ex == "c" || ex == "cpp" || ex == "java" || ex == "py" || ex == "html"||ex == "html" || ex == "css" || ex == "scss" || ex == "js" || ex == "cs" || ex == "rb" || ex == "php" || ex == "sql" || ex == "mysql" || ex == "pl") {
         return ("code")
     } else {
         return ("file")

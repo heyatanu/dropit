@@ -1,15 +1,13 @@
 @media (max-width: 990px) {
-  #share-btn{
-    margin-top: 7px;;
-  }
     #container-id {
       width: 100%;
       padding-left: 20px;
       padding-right: 20px;
     }
-    #upload-complete-div > #link-copy-div > #btncopy > button {
-      width: 98%;
-      margin-left: 14px;
+    #upload-complete-div > #link-copy-div > #btncopy >div> button {
+      margin-bottom: 5px;
+      width: 102%;
+     
     }
     #showinfo_div {
       flex-direction: column;
@@ -64,9 +62,10 @@
   }
   
   @media (max-width: 1200px) {
-    #upload-complete-div > #link-copy-div > #btncopy > button {
-      width: 98%;
-      margin-left: 14px;
+    #upload-complete-div > #link-copy-div > #btncopy >div> button {
+      margin-bottom: 5px;
+      width: 102%;
+     
     }
   }
   @media (max-width: 800px) {
@@ -101,9 +100,10 @@
     #ret_file_type_img {
       width: 5%;
     }
-    #upload-complete-div > #link-copy-div > #btncopy > button {
-      width: 97%;
-      margin-left: 14px;
+    #upload-complete-div > #link-copy-div > #btncopy >div> button {
+      margin-bottom: 5px;
+      width: 102%;
+     
     }
   }
   
@@ -164,9 +164,10 @@
     #passfield {
       margin-bottom: 10px;
     }
-    #upload-complete-div > #link-copy-div > #btncopy > button {
-      width: 96%;
-      margin-left: 14px;
+    #upload-complete-div > #link-copy-div > #btncopy >div> button {
+      margin-bottom: 5px;
+      width: 102%;
+     
     }
     #deletedata-div {
       flex-direction: column;

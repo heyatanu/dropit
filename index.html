@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="style.css"> </head>
 <link rel="stylesheet" href="./Responsive.css"> </head>
 
-<body>
+<body>							
 	<!-- QRCODE -->
 	<input id="qr-text" type="text" readonly style="display: none;"/>
 
@@ -56,13 +56,19 @@
 						</div>
 						<p><img src="./Images/Loading/Waiting.gif" alt="uploading" id="uploading-img"> <span id="fileaccessid">Your file access ID will appare here</span></p>
 						<div id="link-copy-div" class="row">
-							<div id="wall" class="col-lg-11">
+							<div id="wall" class="col-lg-12">
 								<div class="well well-sm" id="copy_txt"> Your access link will appare here </div>
 								<input id="gogo" style="display:block;height: 0;opacity: 0;" readonly> </div>
-							<div id="btncopy" class="col-lg-1">
-								<button id="copylink" class="btn btn-primary" onclick="copylinkfun()" data-toggle="modal" data-target="#myModal" disabled><span class="glyphicon glyphicon-copy"></span></button>
-								<button id="sharelink" style="margin-top:5px;" class="btn btn-success" onclick="sharelinkfun()" disabled><span class="glyphicon glyphicon-share-alt"></span></button>
-								<button id="qrshare" style="margin-top:5px;" class="btn btn-success" onclick="linkqrgen()"disabled data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-qrcode"></span></button>
+							<div id="btncopy" class="col-lg-12">
+								<div class="col-lg-4 col-xs-12 col-s-12 col-md-4">
+									<button id="copylink" class="btn btn-primary" onclick="copylinkfun()" data-toggle="modal" data-target="#myModal" disabled><span class="glyphicon glyphicon-copy"></span></button>
+								</div>
+								<div class="col-lg-4 col-xs-12 col-s-12 col-md-4">
+									<button id="sharelink" class="btn btn-success" onclick="sharelinkfun()" disabled><span class="glyphicon glyphicon-share-alt"></span></button>
+								</div>
+								<div class="col-lg-4 col-xs-12 col-s-12 col-md-4">
+									<button id="qrshare" class="btn btn-success" onclick="linkqrgen(0)"disabled data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-qrcode"></span></button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -82,8 +88,13 @@
 						<p id="search-file-name">FileName</p> <img src="./Images/FileIcons/file.png" alt="upload gif" id="search-file-type">
 						<p id="search-file-status">Status</p>
 						<div id="download-btn-div"> <img src="./Images/Loading/Waiting.gif" alt="find gif" id="download-btn-img"> <a class="btn btn-success disabled" href="" id="download-btn">Download File <span class="glyphicon glyphicon-circle-arrow-down"></span></a> </div>
-						<div id="h"> <button class="btn btn-success" id="share-btn" onclick="sharelinkfun()" disabled><span class="glyphicon glyphicon-share-alt"></span></button> </div>
-
+					</div>
+					<div class="well well-sm" >
+						<div class="btn-group btn-group-justified ">
+							<a onclick="copylinkfun()" data-toggle="modal " data-target="#myModal"class="btn btn-primary retriveallsharebtn disabled"><span class="glyphicon glyphicon-copy"></span></a>
+							<a onclick="sharelinkfun()" class="btn btn-primary retriveallsharebtn disabled"><span class="glyphicon glyphicon-share-alt"></span></a>
+							<a  class="btn btn-primary retriveallsharebtn disabled" data-toggle="modal" data-target="#myModal" onclick="linkqrgen(0)"><span class="glyphicon glyphicon-qrcode"></span></a>
+						  </div>
 					</div>
 				</div>
 			</div>
@@ -161,14 +172,3 @@
 
 </html>
 
-<div class="modal-dialog" role="document">
-	<div class="modal-content">
-	  <div class="modal-body">
-		<p>Modal body text goes here.</p>
-	  </div>
-	  <div class="modal-footer">
-		<button type="button" class="btn btn-primary">Save changes</button>
-		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	  </div>
-	</div>
-  </div>
