@@ -1,10 +1,12 @@
 let mainform=document.getElementById("mainform");
 let loader=document.getElementById("loader");
 let password=document.getElementById("password");
+password.placeholder="enter hint here"
 let exten=document.getElementById("exten");
 let passwordvalue=password.value;
 let extenvalue=exten.value;
 passwordvalue=passwordvalue.trim();
+passwordvalue=passwordvalue.toLowerCase();
 extenvalue=extenvalue.trim();
 let question=document.getElementById("question");
 let outsubmit=document.getElementById("outsubmit");
@@ -24,44 +26,51 @@ function checkdatabase(){
 
 
         firebase.database().ref('Picture/').once('value', function(snapshot) {
-            const propOwn = Object.getOwnPropertyNames(snapshot);
-            let snaplength=(propOwn.length);
-            snapshot.forEach(function(childSnapshot) {
-                let fetchpass=childSnapshot.val().Password;
-                let upass=document.getElementById("password").value;
-                if (fetchpass==upass){
-                    let fetchfilname=childSnapshot.val().Name;
-                   let fetchfilnameex= fetchfilname.split('.').pop();
-                    let uexten=document.getElementById("exten").value;
-                    if (uexten==fetchfilnameex){
-                         ugetname = fetchfilname.replace(/\.[^/.]+$/, "")
-                        if (b==false){
-                            b=true
+            if (snapshot.val()==null){
+                loader.style.display="none";
+                forgotstatus.style.display="block";
+                forgotstatus.innerHTML="upload some file first";
+            }
+            else{
+                const propOwn = Object.getOwnPropertyNames(snapshot.val());
+                let snaplength=(propOwn.length);
+                snapshot.forEach(function(childSnapshot) {
+                    let fetchpass=childSnapshot.val().Password;
+                    let upass=document.getElementById("password").value;
+                    if (fetchpass==upass){
+                        let fetchfilname=childSnapshot.val().Name;
+                       let fetchfilnameex= fetchfilname.split('.').pop();
+                        let uexten=document.getElementById("exten").value;
+                        if (uexten==fetchfilnameex){
+                             ugetname = fetchfilname.replace(/\.[^/.]+$/, "")
+                            if (b==false){
+                                b=true
+                            }
+                        }
+                        else{
+                            // console.log("EX")
+                        }
+                        
+                    }
+                    else{
+                        // console.log("NOT FOUND")
+                    }
+    
+                    co=co+1;
+                    if (co==snaplength){
+                        loader.style.display="none";
+                        forgotstatus.style.display="block";
+                        if (b){
+                            // console.log("HH")
+                            // console.log(ugetname);
+                            forgotstatus.innerHTML=ugetname;
+                        }
+                        else{
+                            forgotstatus.innerHTML="naa..!! please check";
                         }
                     }
-                    else{
-                        // console.log("EX")
-                    }
-                    
-                }
-                else{
-                    // console.log("NOT FOUND")
-                }
-
-                co=co+1;
-                if (co==snaplength){
-                    loader.style.display="none";
-                    forgotstatus.style.display="block";
-                    if (b){
-                        console.log("HH")
-                        console.log(ugetname);
-                        forgotstatus.innerHTML=ugetname;
-                    }
-                    else{
-                        forgotstatus.innerHTML="naa..!! please check";
-                    }
-                }
-            });
+                });
+            }
         
         });
     }
