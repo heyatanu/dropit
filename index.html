@@ -7,10 +7,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="Images/logo.ico">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css"> </head>
-<link rel="stylesheet" href="./Responsive.css"> </head>
+	<link rel="stylesheet" href="style.css"> 
+<link rel="stylesheet" href="./Responsive.css"> 
+<link rel="stylesheet" href="./preloader.css"> 
+<script src="./jquery.js"></script>
+<script src="./preloader.js"></script>
+</head>
 
-<body>							
+<body style="overflow-x: hidden;">						
+	 <div class="se-pre-con"></div><!--	PRELOADER -->
 	<!-- QRCODE -->
 	<input id="qr-text" type="text" readonly style="display: none;"/>
 	<!-- QRCODE -->
@@ -45,7 +50,7 @@
 						</div>
 					</div>
 					<div class="well well-sm" style="display: flex;" id="password">
-							<input type="password" class="form-control" style="font-weight: 500;letter-spacing: 4px; word-spacing: 3px;" id="user-password" placeholder="Waiting For File" readonly >
+							<input type="password" class="form-control" id="user-password" placeholder="Waiting For File" readonly >
 							<button style="outline: none;background-color: white;" class="btn btn-default" id="eye-btn" onclick="showorhisepass()" disabled><span id="eye-span" class="glyphicon glyphicon-eye-close"></span></button>
 					</div>
 					<div class="well well-sm" id="upload-complete-div">
