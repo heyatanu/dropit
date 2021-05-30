@@ -22,7 +22,7 @@ let filenameui = fileid + "." + fileex;
                 let fetchextention = fetchfilename.split('.').pop();
                 let fetchid = fetchfilename.replace(/\.[^/.]+$/, "")
                 if (fileex == fetchextention) {
-                    var desertRef = firebase.storage().ref('Images/' + snapshot.val().Name);
+                    var desertRef = firebase.storage().ref('Images/' + snapshot.val().LocalFileName);
                     desertRef.delete().then(() => {
                         deletedataststus.innerHTML = "deleted successfull";
                         // console.log("DLETE FILE ")
