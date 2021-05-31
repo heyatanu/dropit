@@ -49,7 +49,9 @@ document.getElementById("retrieve").onclick = function() {
                     document.getElementById("search-file-type").src = "./Images/FileIcons/" + iconname + ".png";
                     document.getElementById("search-file-status").innerText = snapshot.val().UploadTime;
                     document.getElementById("download-btn-img").src = './Images/Loading/uplodeComplate.gif';
-                    document.getElementById("download-btn").href = snapshot.val().Link;
+//                     document.getElementById("download-btn").href = snapshot.val().Link;
+                    document.getElementById("download-btn").href =url;
+                    
                     
                     if (snapshot.val().DeleteOnDownload==true){
 
