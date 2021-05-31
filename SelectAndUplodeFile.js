@@ -10,6 +10,7 @@ let sharetext=``;
 let shareurl="";
 let titleurl="";
 let co=0;
+let gofinalnameforuplode="";
 //----------------------SELECT THE IMAGE---------------//
 
 document.getElementById("select").onclick = function(e) {
@@ -96,11 +97,13 @@ passfieldvalue=passfieldvalue.toLowerCase();
                              document.getElementById("uplodeprogrssbar").classList.add("progress-bar-success");
                              let randomid = Math.floor(Math.random() * 9999999);
                              let localfilename = (files[0].name)
+                             gofinalnameforuplode=randomid+"-"+localfilename;
                              let extention = localfilename.split('.').pop();
                              let uplodefilename = randomid + "." + extention
                              //   console.log(uplodefilename)
                              let iconname = fileiconchoose(extention)
-                             var uploadTask = firebase.storage().ref('Images/' + selectfilename).put(files[0]);
+                             let finaluplodename=randomid+"-"+selectfilename
+                             var uploadTask = firebase.storage().ref('Images/' + finaluplodename).put(files[0]);
                              uploadTask.on('state_changed', function(snapshot) {
                                  passfield.readOnly = true;
                                      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -125,12 +128,13 @@ passfieldvalue=passfieldvalue.toLowerCase();
                                  function() {
                                      uploadTask.snapshot.ref.getDownloadURL().then(function(url) {
                                          ImgUrl = url;
+                                         
                                          uplodedate = dateobj.getDate() + "/" + dateobj.getMonth() + "/" + dateobj.getFullYear() + " T " + dateobj.getHours() + ":" + dateobj.getMinutes();
                          
                                          firebase.database().ref('Picture/' + randomid).set({
                                              Name: randomid + "." + extention,
                                              Link: ImgUrl,
-                                             LocalFileName: selectfilename,
+                                             LocalFileName: gofinalnameforuplode,
                                              UploadTime: uplodedate,
                                              DeleteOnDownload: deleteon1stdownload,
                                              IsAlreadyDownloaded: false,
@@ -234,6 +238,7 @@ passfieldvalue=passfieldvalue.toLowerCase();
                         document.getElementById("uplodeprogrssbar").classList.add("progress-bar-success");
                         let randomid = Math.floor(Math.random() * 9999999);
                         let localfilename = (files[0].name)
+                        gofinalnameforuplode=randomid+"-"+localfilename;
                         let extention = localfilename.split('.').pop();
                         let uplodefilename = randomid + "." + extention
                         //   console.log(uplodefilename)
@@ -268,7 +273,7 @@ passfieldvalue=passfieldvalue.toLowerCase();
                                     firebase.database().ref('Picture/' + randomid).set({
                                         Name: randomid + "." + extention,
                                         Link: ImgUrl,
-                                        LocalFileName: selectfilename,
+                                        LocalFileName: gofinalnameforuplode,
                                         UploadTime: uplodedate,
                                         DeleteOnDownload: deleteon1stdownload,
                                         IsAlreadyDownloaded: false,
