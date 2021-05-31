@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>DropIT</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="Images/logo.ico">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css"> 
+<link rel="stylesheet" href="./Responsive.css"> 
+<link rel="stylesheet" href="./preloader.css"> 
+<script src="./jquery.js"></script>
+<script src="./preloader.js"></script>
+</head>
+
+<body style="overflow-x: hidden;">						
+	 <div class="se-pre-con"></div><!--	PRELOADER -->
+	<!-- QRCODE -->
+	<input id="qr-text" type="text" readonly style="display: none;"/>
+	<!-- QRCODE -->
+
+	<div id="overlayforurldownload"><img id="overlayforurldownload-img" src="./Images/Loading/loading.gif" alt="">
+		<div class="text-center" > <a id="overlayforurldownload-a" class="btn btn-dark disabled btn-lg" href="">loading . .</a>
+			<br> <a id="overlayforurldownload-dropit" class="btn btn-success" href="">HOME </a> </div>
+		<p id="overlayforurldownload-p">wait we are checking</p>
+	</div>
+	<button id="show" style="display: none;">Retrieve All</button>
+	<div class="container" id="container-id">
+		<div class="well well-sm text-center" id="welcome-msg">welcome to dropit share with anyone</div>
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Select and Upload File</div>
+				<div class="panel-body">
+					<div class="well well-sm" id="select_div"> <img src="./Images/Loading/uplode.gif" alt="upload gif">
+						<button type="button" class="btn btn-primary" id="select">Select File <span class="glyphicon glyphicon-open-file"></span></button>
+					</div>
+					<div class="well well-sm" id="showinfo_div">
+						<p id="show-info-file-name">FileName </p>
+						<p id="show-info-file-type">Filetype </p> <img src="./Images/FileIcons/file.png" alt="upload gif" id="show_info_file_type_img">
+						<p id="show-info-status">waiting for file </p>
+						<div id="uplode_btn"> <img src="./Images/Loading/Waiting.gif" id="uplode_btn_img" alt="upload gif">
+							<button type="button" class="btn btn-success" id="upload" disabled>Upload File <span class="glyphicon glyphicon-cloud-upload"></span></button>
+						</div>
+					</div>
+					<div class="well well-sm" id="for-delete-div">
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="for-delete-checkbox" disabled>
+							<label class="form-check-label" id="for-delete-sts"> waiting for file </label>
+						</div>
+					</div>
+					<div class="well well-sm" style="display: flex;" id="password">
+							<input type="password" class="form-control" id="user-password" placeholder="Waiting For File" readonly >
+							<button style="outline: none;background-color: white;" class="btn btn-default" id="eye-btn" onclick="showorhisepass()" disabled><span id="eye-span" class="glyphicon glyphicon-eye-close"></span></button>
+					</div>
+					<div class="well well-sm" id="upload-complete-div">
+						<div class="progress" id="div_uplodeprogrssbar">
+							<div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" id="uplodeprogrssbar"> Waiting for upload </div>
+						</div>
+						<p><img src="./Images/Loading/Waiting.gif" alt="uploading" id="uploading-img"> <span id="fileaccessid">Your file access ID will appare here</span></p>
+						<div id="link-copy-div" class="row">
+							<div id="wall" class="col-lg-12">
+								<div class="well well-sm" id="copy_txt"> Your access link will appare here </div>
+								<input id="gogo" style="display:block;height: 0;opacity: 0;" readonly> </div>
+							<div id="btncopy" class="col-lg-12">
+								<div class="col-lg-4 col-xs-12 col-s-12 col-md-4">
+									<button id="copylink" class="btn btn-success" onclick="copylinkfun()" data-toggle="modal" data-target="#myModal" disabled><span class="glyphicon glyphicon-copy"></span></button>
+								</div>
+								<div class="col-lg-4 col-xs-12 col-s-12 col-md-4">
+									<button id="sharelink" class="btn btn-success" onclick="sharelinkfun()" disabled><span class="glyphicon glyphicon-share-alt"></span></button>
+								</div>
+								<div class="col-lg-4 col-xs-12 col-s-12 col-md-4">
+									<button id="qrshare" class="btn btn-success" onclick="linkqrgen(0)"disabled data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-qrcode"></span></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Forgot Access ID</div>
+				<div class="panel-body">
+					<a class="btn btn-block btn-danger" href="./ForgotAccessID/">Get your forgot access ID here</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Retrive File</div>
+				<div class="panel-body">
+					<div class="well well-sm" id="search_div"> <img src="./Images/Loading/search.gif" alt="search gif">
+						<input placeholder="ID" id="namebox" type="number" required>
+						<button id="retrieve" class="btn btn-success">Retrieve File <span class="glyphicon glyphicon-search"></span></button>
+					</div>
+					<div class="well well" id="search_result_div">
+						<p id="search-file-id">ID</p>
+						<p id="search-file-name">FileName</p> <img src="./Images/FileIcons/file.png" alt="upload gif" id="search-file-type">
+						<p id="search-file-status">Status</p>
+						<div id="download-btn-div"> <img src="./Images/Loading/Waiting.gif" alt="find gif" id="download-btn-img"> <a class="btn btn-success disabled" href="" id="download-btn">Download File <span class="glyphicon glyphicon-circle-arrow-down"></span></a> </div>
+					</div>
+					<div class="well well-sm" >
+						<div class="btn-group btn-group-justified ">
+							<a onclick="copylinkfun()" data-toggle="modal" data-target="#myModal"class="btn btn-primary retriveallsharebtn disabled"><span class="glyphicon glyphicon-copy"></span></a>
+							<a onclick="sharelinkfun()" class="btn btn-primary retriveallsharebtn disabled"><span class="glyphicon glyphicon-share-alt"></span></a>
+							<a  class="btn btn-primary retriveallsharebtn disabled" data-toggle="modal" data-target="#myModal" onclick="linkqrgen(0)"><span class="glyphicon glyphicon-qrcode"></span></a>
+						  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Retrive All Data</div>
+				<div class="panel-body">
+					<div class="well well-sm text-center" id="checkpass_sts">enter your password here</div>
+					<div class="well well-sm" id="checkpass_div"> <img src="./Images/Loading/lock.gif" alt="lock gif" id="lockicon">
+						<input placeholder="Password" id="passfield" required type="password">
+						<button id="passcheck" class="btn btn-success">Check And Retrive All Data <span class="glyphicon glyphicon-th"></span></button>
+					</div>
+					<div style="margin: 0; padding: 0; display: none;" id="retriveall-loader">
+						<img src="./ForgotAccessID/load.gif" alt="" srcset="" width="5%" style="display: block; margin-left: auto; margin-right: auto;">
+					</div>
+					<div id="allret">
+						<div class="well well-sm" id="retall_div"> <img src="./Images/FileIcons/file.png" alt="upload gif" id="ret_file_type_img">
+							<p id="ret-file-id">ID</p>
+							<p id="ret-file-name">FileName</p>
+							<p id="ret-file-status">Status</p>
+							<div id="ret-download-btn"> <img src="./Images/Loading/Waiting.gif" id="ret-download-btn-img" alt="upload gif"> <a class="btn btn-success disabled " href="` + filelink + `" id="showalldownloadbtn" >Download File</a> </div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Delete Data</div>
+				<div class="panel-body">
+					<div class="well well-sm text-center" id="deletedata-sts">delete file</div>
+					<div class="well well-sm" id="deletedata-div"> <img src="./Images/Loading/trash.gif" alt="lock gif" id="deletedata-icon">
+						<input placeholder="ID" id="deletedata-id" required type="number">
+						<input placeholder="File type(gif,zip,jpg)" id="deletedata-ex" required type="text">
+						<button id="deletedata-btn" class="btn btn-danger">Delete This <span class="glyphicon glyphicon-trash"></span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="well well-sm text-center" id="welcome-msg">created by <a href="https://github.com/heyatanu" target="_blank" style="text-decoration: none;">ATANU</a></div>
+	</div>
+	<div class="container">
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<div class="alert alert-success alert-dismissible"> <a class="close" data-dismiss="modal" aria-label="close">&times;</a> <strong>Success!</strong> Link copied to clipboard</div>
+			</div>
+		</div>
+	</div>
+	<button type="button" style="display: none;" data-toggle="modal" data-target="#onlineoroffline" id="fromlinkbtn">Open Modal</button>
+	<div class="container">
+		<div class="modal fade" id="onlineoroffline" role="dialog">
+			<div class="modal-dialog">
+				<div class="alert alert-danger alert-dismissible" id="fromurldib"> <a class="close" data-dismiss="modal" aria-label="close">&times;</a>
+					<p><strong id="link-status-txt"></strong></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<!-- ------------------------FIRBASE LIBRARIES------------------------------------------------->
+	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+	<script src="./InitializeFirebase.js"></script>
+	<script src="./SelectAndUplodeFile.js"></script>
+	<script src="./RetriveFile.js"></script>
+	<script src="./ShowAll.js"></script>
+	<script src="./FromUrlOpen.js"></script>
+	<script src="./DeleteData.js"></script>
+	<script src="./DeleteAllData.js"></script>
+	<script src="./QrcodeGen.js"></script>
+	<script src="./ShowOrHidePass.js"></script>
+	<script src="./OnEnterSubmit.js"></script>
+</body>
+
+</html>
+
