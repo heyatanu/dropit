@@ -6,7 +6,9 @@ passcheck.onclick = function() {
         document.getElementById("checkpass_sts").innerHTML = "white space is not allowed"
         document.getElementById("passfield").value = "";
     } else if (passcheckValue != "") {
+        document.getElementById("retriveall-loader").style.display="block";
         document.getElementById("checkpass_sts").innerHTML = "wait we are checking"
+        
         db.collection('admin').get().then((snapshot) => {
             let passg = (snapshot.docs[0].data().password)
             if (passg == passcheckValue) {
@@ -17,9 +19,12 @@ passcheck.onclick = function() {
                 document.getElementById("show").click()
             } else {
                 document.getElementById("checkpass_sts").innerHTML = "Wrong password try again";
+        document.getElementById("retriveall-loader").style.display="none";
             }
         }).catch(err => {
             document.getElementById("checkpass_sts").innerHTML = "look like we are down try later";
+        document.getElementById("retriveall-loader").style.display="none";
+
         });
     } else if ((document.getElementById("passfield").value).includes(" ") == true) {
         document.getElementById("checkpass_sts").innerHTML = " white space is not allowed"
@@ -60,13 +65,21 @@ document.getElementById("show").onclick = function() {
         });
         if (html == "") {
             document.getElementById("checkpass_sts").innerHTML = "no data found"
+        document.getElementById("retriveall-loader").style.display="none";
+        document.getElementById("passfield").style.display="none";
+         document.getElementById("passcheck").innerHTML="RELOAD THE PAGE"
+
         } else {
+        document.getElementById("passfield").style.display="none";
+         document.getElementById("passcheck").innerHTML="RELOAD THE PAGE"
             document.getElementById("allret").innerHTML = html;
             document.getElementById("checkpass_sts").innerHTML = "all data retrive"
+        document.getElementById("retriveall-loader").style.display="none";
+
             document.getElementById("passcheck").disabled = true;
             document.getElementById("passfield").value = "";
             var y = window.scrollY;
-            window.scrollBy(y, y + 100);
+            // window.scrollBy(y, y + 1);
         }
 
     });
@@ -103,3 +116,4 @@ function fileiconchoose(ex) {
         return ("file")
     }
 }
+

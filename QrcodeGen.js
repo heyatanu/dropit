@@ -5,6 +5,9 @@ function linkqrgen(n) {
     document.getElementById("myModal").innerHTML = `
             <div class="modal-dialog" role="document">
             <div class="modal-content">
+            <div class="modal-header text-center">
+            <h5 class="modal-title">`+filenameforqr+` QR CODE</h5>
+            </div>
               <div class="modal-body">
                 <canvas id="qr-code"style="margin-left: auto;margin-right: auto;display:block;"></canvas>
               </div>
