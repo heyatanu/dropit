@@ -102,8 +102,8 @@ passfieldvalue=passfieldvalue.toLowerCase();
                              let uplodefilename = randomid + "." + extention
                              //   console.log(uplodefilename)
                              let iconname = fileiconchoose(extention)
-                             let finaluplodename=randomid+"-"+selectfilename
-                             var uploadTask = firebase.storage().ref('Images/' + finaluplodename).put(files[0]);
+                             
+                             var uploadTask = firebase.storage().ref('Images/' + gofinalnameforuplode).put(files[0]);
                              uploadTask.on('state_changed', function(snapshot) {
                                  passfield.readOnly = true;
                                      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -243,7 +243,7 @@ passfieldvalue=passfieldvalue.toLowerCase();
                         let uplodefilename = randomid + "." + extention
                         //   console.log(uplodefilename)
                         let iconname = fileiconchoose(extention)
-                        var uploadTask = firebase.storage().ref('Images/' + selectfilename).put(files[0]);
+                        var uploadTask = firebase.storage().ref('Images/' + gofinalnameforuplode).put(files[0]);
                         uploadTask.on('state_changed', function(snapshot) {
                             passfield.readOnly = true;
                                 var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
