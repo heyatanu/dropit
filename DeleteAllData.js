@@ -36,11 +36,11 @@ DeleteAllDate()
 document.addEventListener('contextmenu', event => event.preventDefault());
 document.ondragstart = function() { return false; };
 document.getElementById("download-btn").addEventListener('contextmenu', event => event.preventDefault());
-document.getElementById("download-btn").onclick = function() {
-    firebase.database().ref('Picture/' + getname).update({
-        IsAlreadyDownloaded: true
-    });
-}
+// document.getElementById("download-btn").onclick = function() {
+//     firebase.database().ref('Picture/' + getname).update({
+//         IsAlreadyDownloaded: true
+//     });
+// }
 
 
 setTimeout(function(){console.clear();}, 5000);
