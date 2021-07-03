@@ -8,6 +8,7 @@ let extenvalue=exten.value;
 passwordvalue=passwordvalue.trim();
 passwordvalue=passwordvalue.toLowerCase();
 extenvalue=extenvalue.trim();
+extenvalue=extenvalue.toLowerCase();
 let question=document.getElementById("question");
 let outsubmit=document.getElementById("outsubmit");
 let forgotstatus=document.getElementById("forgot-status");
@@ -37,10 +38,18 @@ function checkdatabase(){
                 snapshot.forEach(function(childSnapshot) {
                     let fetchpass=childSnapshot.val().Password;
                     let upass=document.getElementById("password").value;
+                    fetchpass=fetchpass.trim();
+                    fetchpass=fetchpass.toLowerCase();
+                    upass=upass.trim();
+                    upass=upass.toLowerCase();
                     if (fetchpass==upass){
                         let fetchfilname=childSnapshot.val().Name;
                        let fetchfilnameex= fetchfilname.split('.').pop();
                         let uexten=document.getElementById("exten").value;
+                        fetchfilnameex=fetchfilnameex.trim();
+                        fetchfilnameex=fetchfilnameex.toLowerCase();
+                        uexten=uexten.trim();
+                        uexten=uexten.toLowerCase();
                         if (uexten==fetchfilnameex){
                              ugetname = fetchfilname.replace(/\.[^/.]+$/, "")
                             if (b==false){
