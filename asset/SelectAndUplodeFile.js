@@ -29,6 +29,7 @@ document.getElementById("select").onclick = function(e) {
 		document.getElementById('uplode_btn_img').src = './Images/Loading/ready.gif';
 		// document.getElementById('uplode_btn_img').style.width = "9%";
 		document.getElementById("show-info-status").innerHTML = "enter the hint to continue";
+		
 		// document.getElementById("show-info-status").innerHTML = "ready for upload";
 		files = e.target.files;
 		reader = new FileReader();
@@ -75,10 +76,12 @@ document.getElementById("upload").onclick = function() {
 	passfieldvalue = passfieldvalue.trim();
 	if (passfieldvalue.includes(" ")) {
 		document.getElementById("show-info-status").innerHTML = "hint field not allowed white space";
+		popupNotificationfx("hint field not allowed white space")
 		passfield.value = "";
 		passfield.focus();
 	} else if (passfieldvalue == "") {
 		document.getElementById("show-info-status").innerHTML = "hint field not be empty";
+		popupNotificationfx("enter the hint to continue")
 		passfield.value = "";
 		passfield.focus();
 	} else {
@@ -163,6 +166,7 @@ document.getElementById("upload").onclick = function() {
 							document.getElementById('copylink').disabled = false;
 							document.getElementById("uplode_btn_img").src = './Images/Loading/uplodeComplate.gif'
 							document.getElementById("show-info-status").innerHTML = "upload complete"
+							popupNotificationfx("upload complete")
 							document.getElementById("show-info-file-name").innerHTML = "FileName";
 							document.getElementById("show-info-file-type").innerHTML = "FileType";
 							document.getElementById("show-info-status").innerHTML = "WAITING FOR FILE";
@@ -219,6 +223,7 @@ document.getElementById("upload").onclick = function() {
 					if (b) {
 						// console.log("match found")
 						document.getElementById("show-info-status").innerHTML = "no..!! you can't use this hint change the hint";
+						popupNotificationfx("no..!! you can't use this hint change the hint")
 						passfield.value = "";
 						passfield.focus();
 					} else {
@@ -295,6 +300,7 @@ document.getElementById("upload").onclick = function() {
 									document.getElementById('copylink').disabled = false;
 									document.getElementById("uplode_btn_img").src = './Images/Loading/uplodeComplate.gif'
 									document.getElementById("show-info-status").innerHTML = "upload complete"
+									popupNotificationfx("upload complete")
 									document.getElementById("show-info-file-name").innerHTML = "FileName";
 									document.getElementById("show-info-file-type").innerHTML = "FileType";
 									document.getElementById("show-info-status").innerHTML = "WAITING FOR FILE";
