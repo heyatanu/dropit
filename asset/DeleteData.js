@@ -6,13 +6,14 @@ document.getElementById("deletedata-btn").onclick = function() {
 	deletedataststus.innerHTML = "let's check"
 	fileid = fileid.trim()
 	fileex = fileex.trim()
-	fileex = fileex.toLowerCase();
+	// fileex = fileex.toLowerCase();
 	let boolb = false;
 	let filenameui = fileid + "." + fileex;
 	if (fileex == "" || fileid == "") {
 		//NOT VALID
 		// console.log("NOT VALID")
 		deletedataststus.innerHTML = "both field must be field"
+		popupNotificationfx("both field must be field")
 	} else {
 		// console.log("WAIT")
 		deletedataststus.innerHTML = "wait let us check"
@@ -58,6 +59,7 @@ document.getElementById("deletedata-btn").onclick = function() {
 				//NOT FOUND
 				// console.log("NOT FOUND")
 				deletedataststus.innerHTML = "file not found"
+				popupNotificationfx("file not found")
 				document.getElementById("deletedata-btn").disabled = false;
 				setTimeout(function() {
 					deletedataststus.innerHTML = "try again";
@@ -70,4 +72,4 @@ document.getElementById("deletedata-btn").onclick = function() {
 
 
 
-console.disableYellowBox = true;
+// console.disableYellowBox = true;

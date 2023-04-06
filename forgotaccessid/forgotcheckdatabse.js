@@ -6,7 +6,7 @@ let exten = document.getElementById("exten");
 let passwordvalue = password.value;
 let extenvalue = exten.value;
 passwordvalue = passwordvalue.trim();
-passwordvalue = passwordvalue.toLowerCase();
+// passwordvalue = passwordvalue.toLowerCase();
 extenvalue = extenvalue.trim();
 extenvalue = extenvalue.toLowerCase();
 let question = document.getElementById("question");
@@ -83,4 +83,10 @@ function checkdatabase() {
 		question.innerHTML = "fill the form"
 	}
 	return false;
+}
+
+function goToHomeFromFA(){
+	var url = new URL(url_string);
+    var forsharelinkurl = url.href;
+	console.log(forgotstatus)
 }

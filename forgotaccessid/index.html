@@ -11,6 +11,7 @@
   </head>
   <body>
     <div class="quiz-container" id="quiz">
+      <button onclick="history.back()" style="background-color: rgba(0, 0, 0, 0.02);"> <span class="glyphicon glyphicon-home"></span></button>
       <div class="quiz-header">
         <form id="mainform" style="display: block;" onsubmit="return checkdatabase()">
           <h2 id="question">find your access id</h2>
@@ -28,6 +29,7 @@
         <div class="well well-lg text-center" style="display:none;margin: 0;border: 4px dashed;" id="forgot-status">not found</div>
       </div>
       <button id="outsubmit" onclick=" checkdatabase()">Check</button>
+      
     </div>
   </body>
   <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>

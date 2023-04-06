@@ -18,6 +18,7 @@ document.getElementById("select").onclick = function(e) {
 	document.getElementById("qrshare").disabled = true;
 	document.getElementById('for-delete-checkbox').checked = false;
 	document.getElementById("uplodeprogrssbar").innerHTML = "Waiting for upload";
+	document.getElementById("uploadeCompletePercentage").innerHTML="";
 	document.getElementById("fileaccessid").innerHTML = "Your File Access ID Will Appare Here";
 	document.getElementById("copy_txt").innerHTML = "Your access link will appare here";
 	document.getElementById("uploading-img").src = './Images/Loading/Waiting.gif';
@@ -71,7 +72,7 @@ document.getElementById("select").onclick = function(e) {
 document.getElementById("upload").onclick = function() {
 	eyebtn.disabled = false;
 	let passfieldvalue = passfield.value;
-	passfieldvalue = passfieldvalue.toLowerCase();
+	passfieldvalue = passfieldvalue;
 
 	passfieldvalue = passfieldvalue.trim();
 	if (passfieldvalue.includes(" ")) {
@@ -112,6 +113,7 @@ document.getElementById("upload").onclick = function() {
 						progress = parseInt(progress)
 						document.getElementById("uplodeprogrssbar").style.width = progress + "%";
 						document.getElementById("uplodeprogrssbar").innerHTML = progress + "%";
+						document.getElementById("uploadeCompletePercentage").innerHTML=progress + "%";
 						document.getElementById("fileaccessid").innerHTML = "Wait we are uploading the file"
 						document.getElementById("show-info-status").innerHTML = "uploading";
 						document.getElementById('upload').disabled = true;
@@ -207,7 +209,7 @@ document.getElementById("upload").onclick = function() {
 
 
 			snapshot.forEach(function(childSnapshot) {
-				let uexten = document.getElementById("user-password").value.toLowerCase();
+				let uexten = document.getElementById("user-password").value;
 				let fetchfilnameex = childSnapshot.val().Password;
 				// console.log(uexten==fetchfilnameex)
 				if (uexten == fetchfilnameex) {
@@ -247,6 +249,7 @@ document.getElementById("upload").onclick = function() {
 								progress = parseInt(progress)
 								document.getElementById("uplodeprogrssbar").style.width = progress + "%";
 								document.getElementById("uplodeprogrssbar").innerHTML = progress + "%";
+								document.getElementById("uploadeCompletePercentage").innerHTML=progress + "%";
 								document.getElementById("fileaccessid").innerHTML = "Wait we are uploading the file"
 								document.getElementById("show-info-status").innerHTML = "uploading";
 								document.getElementById('upload').disabled = true;

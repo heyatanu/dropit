@@ -86,6 +86,7 @@ document.getElementById("retrieve").onclick = function() {
 		});
 
 	} else {
+		popupNotificationfx( "Enter the ID")
 		document.getElementById("search-file-status").innerText = "ID field is mandatory"
 	}
 }

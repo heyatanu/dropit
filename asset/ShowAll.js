@@ -12,7 +12,7 @@ passcheck.onclick = function() {
 		db.collection('admin').get().then((snapshot) => {
 			let passg = (snapshot.docs[0].data().password)
 			if (passg == passcheckValue) {
-				document.getElementById("lockicon").src = './Images/Loading/unlock.png';
+				document.getElementById("lockicon").src = './../Images/Loading/unlock.png';
 				document.getElementById("lockicon").style.width = "2.8%";
 				document.getElementById("checkpass_sts").innerHTML = "wait we are fetching data"
 				document.getElementById("passfield").value = "";
@@ -41,24 +41,35 @@ document.getElementById("show").onclick = function() {
 	firebase.database().ref('Picture/').once('value', function(snapshot) {
 		let html = ``;
 		snapshot.forEach(function(childSnapshot) {
+			// console.log(childSnapshot.val())
 			let filename = (childSnapshot.val().Name)
+			let password = (childSnapshot.val().Password)
 			let filelink = (childSnapshot.val().Link)
 			let extention = filename.split('.').pop();
 			let id = filename.replace(/\.[^/.]+$/, "")
 			let iconname = fileiconchoose(extention);
 
 			let g = `
-        <div class="well well-sm" id="retall_div">
-        <img src="./Images/FileIcons/` + iconname + `.png" alt="upload gif" id="ret_file_type_img">
-        <p id="ret-file-id">` + id + `</p>
-        <p id="ret-file-name">` + childSnapshot.val().LocalFileName + `</p>
-        
-        <p id="ret-file-status">` + childSnapshot.val().UploadTime + `</p>
-        <div id="ret-download-btn">
-            <img src="./Images/Loading/uplodeComplate.gif" id="ret-download-btn-img" alt="upload gif">
-            <a  class="btn btn-success " href="` + filelink + `" >Download File</a>
-        </div>
-        </div>
+
+
+		<div class="col-sm-12 col-md-6" class="retall_div">
+                <div class="thumbnail">
+                  <div class="caption" style="display: flex; justify-content: space-between;">
+                    <div>
+					
+                      <p id="ret-file-id">` + id + `</p>
+                      <p id="ret-file-name">` + childSnapshot.val().LocalFileName + `</p>
+                      <p id="ret-file-status">` + childSnapshot.val().UploadTime + `</p>
+					  <p id="ret-file-status">` + childSnapshot.val().Password + `</p>
+                    </div>
+                    <img src="./../Images/FileIcons/` + iconname + `.png" alt="upload gif" id="ret_file_type_img">
+                  </div>
+                  <div id="ret-download-btn" style="display: flex;">
+                    <img src="./../Images/Loading/uplodeComplate.gif" id="ret-download-btn-img" alt="upload gif">
+                    <a target="_blank"class="btn btn-default btn-block " href="` + filelink + `"id="showalldownloadbtn">Download File</a>
+                  </div>
+                </div>
+				</div>
         `;
 
 			html = html + g;
