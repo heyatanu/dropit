@@ -35,23 +35,23 @@ function DeleteAllDate() {
 
 DeleteAllDate()
 
-// document.addEventListener('contextmenu', event => event.preventDefault());
-// document.ondragstart = function() {
-// 	return false;
-// };
-// document.getElementById("download-btn").addEventListener('contextmenu', event => event.preventDefault());
-// // document.getElementById("download-btn").onclick = function() {
-// //     firebase.database().ref('Picture/' + getname).update({
-// //         IsAlreadyDownloaded: true
-// //     });
-// // }
+document.addEventListener('contextmenu', event => event.preventDefault());
+document.ondragstart = function() {
+	return false;
+};
+document.getElementById("download-btn").addEventListener('contextmenu', event => event.preventDefault());
+// document.getElementById("download-btn").onclick = function() {
+//     firebase.database().ref('Picture/' + getname).update({
+//         IsAlreadyDownloaded: true
+//     });
+// }
 
 
-// setTimeout(function() {
-// 	console.clear();
-// }, 2000);
+setTimeout(function() {
+	console.clear();
+}, 2000);
 
 
-// setInterval(function() {
-// 	console.clear();
-// }, 8000);
+setInterval(function() {
+	console.clear();
+}, 8000);

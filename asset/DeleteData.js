@@ -72,4 +72,4 @@ document.getElementById("deletedata-btn").onclick = function() {
 
 
 
-// console.disableYellowBox = true;
+console.disableYellowBox = true;
