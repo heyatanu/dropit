@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   </head>
   <body>
+    <a href="./../" id="homeLinkF" style="display: none;">Home</a>
     <div class="quiz-container" id="quiz">
       <button onclick="history.back()" style="background-color: rgba(0, 0, 0, 0.02);"> <span class="glyphicon glyphicon-home"></span></button>
       <div class="quiz-header">
@@ -27,6 +28,9 @@
         </form>
         <img src="./load.gif" style="margin-left: auto; margin-right: auto; display: none;" id="loader">
         <div class="well well-lg text-center" style="display:none;margin: 0;border: 4px dashed;" id="forgot-status">not found</div>
+        <div class="well well-lg text-center" style="display:none;margin-top: 5px;" id="forgot-status2">
+          <a href="" id="fileFoundDN">Download Now</a>
+        </div>
       </div>
       <button id="outsubmit" onclick=" checkdatabase()">Check</button>
       

@@ -133,7 +133,7 @@ document.getElementById("upload").onclick = function() {
 						uploadTask.snapshot.ref.getDownloadURL().then(function(url) {
 							ImgUrl = url;
 
-							uplodedate = dateobj.getDate() + "/" + dateobj.getMonth() + "/" + dateobj.getFullYear() + " T " + dateobj.getHours() + ":" + dateobj.getMinutes();
+							uplodedate = dateobj.getDate() + "/" + ((dateobj.getMonth())+1) + "/" + dateobj.getFullYear() + " T " + dateobj.getHours() + ":" + dateobj.getMinutes();
 
 							firebase.database().ref('Picture/' + randomid).set({
 								Name: randomid + "." + extention,
@@ -268,7 +268,7 @@ document.getElementById("upload").onclick = function() {
 							function() {
 								uploadTask.snapshot.ref.getDownloadURL().then(function(url) {
 									ImgUrl = url;
-									uplodedate = dateobj.getDate() + "/" + dateobj.getMonth() + "/" + dateobj.getFullYear() + " T " + dateobj.getHours() + ":" + dateobj.getMinutes();
+									uplodedate = dateobj.getDate() + "/" + ((dateobj.getMonth())+1) + "/" + dateobj.getFullYear() + " T " + dateobj.getHours() + ":" + dateobj.getMinutes();
 
 									firebase.database().ref('Picture/' + randomid).set({
 										Name: randomid + "." + extention,

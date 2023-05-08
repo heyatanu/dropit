@@ -41,8 +41,9 @@ document.getElementById("show").onclick = function() {
 	firebase.database().ref('Picture/').once('value', function(snapshot) {
 		let html = ``;
 		snapshot.forEach(function(childSnapshot) {
-			// console.log(childSnapshot.val())
 			let filename = (childSnapshot.val().Name)
+			// console.log(childSnapshot.val(),filename)
+
 			let password = (childSnapshot.val().Password)
 			let filelink = (childSnapshot.val().Link)
 			let extention = filename.split('.').pop();

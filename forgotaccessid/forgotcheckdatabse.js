@@ -12,6 +12,7 @@ extenvalue = extenvalue.toLowerCase();
 let question = document.getElementById("question");
 let outsubmit = document.getElementById("outsubmit");
 let forgotstatus = document.getElementById("forgot-status");
+let forgotstatus2 = document.getElementById("forgot-status2");
 let b = false;
 let co = 0;
 let ugetname = "";
@@ -39,9 +40,9 @@ function checkdatabase() {
 					let fetchpass = childSnapshot.val().Password;
 					let upass = document.getElementById("password").value;
 					fetchpass = fetchpass.trim();
-					fetchpass = fetchpass.toLowerCase();
+					// fetchpass = fetchpass.toLowerCase();
 					upass = upass.trim();
-					upass = upass.toLowerCase();
+					// upass = upass.toLowerCase();
 					if (fetchpass == upass) {
 						let fetchfilname = childSnapshot.val().Name;
 						let fetchfilnameex = fetchfilname.split('.').pop();
@@ -67,11 +68,21 @@ function checkdatabase() {
 					if (co == snaplength) {
 						loader.style.display = "none";
 						forgotstatus.style.display = "block";
+						forgotstatus2.style.display = "block";
+
 						if (b) {
 							// console.log("HH")
 							// console.log(ugetname);
 							forgotstatus.innerHTML = ugetname;
+							forgotstatus2.style.display = "block";
+							document.getElementById("fileFoundDN").href=goToHomeFromFA(ugetname)
 						} else {
+							document.getElementById("fileFoundDN").innerText="Reload"
+							document.getElementById("fileFoundDN").onclick(function(){
+								location.reload();
+							})
+							
+
 							forgotstatus.innerHTML = "naa..!! please check";
 						}
 					}
@@ -85,8 +96,8 @@ function checkdatabase() {
 	return false;
 }
 
-function goToHomeFromFA(){
-	var url = new URL(url_string);
-    var forsharelinkurl = url.href;
-	console.log(forgotstatus)
+function goToHomeFromFA(id){
+	var url = document.getElementById("homeLinkF").href
+	url=url+"?id="+id
+	return url
 }

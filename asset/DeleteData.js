@@ -1,5 +1,5 @@
 document.getElementById("deletedata-btn").onclick = function() {
-	document.getElementById("deletedata-btn").disabled = true;
+	
 	let fileid = document.getElementById("deletedata-id").value;
 	let fileex = document.getElementById("deletedata-ex").value;
 	let deletedataststus = document.getElementById("deletedata-sts");
@@ -12,9 +12,10 @@ document.getElementById("deletedata-btn").onclick = function() {
 	if (fileex == "" || fileid == "") {
 		//NOT VALID
 		// console.log("NOT VALID")
-		deletedataststus.innerHTML = "both field must be field"
-		popupNotificationfx("both field must be field")
+		deletedataststus.innerHTML = "both filed is required"
+		popupNotificationfx("both filed is required")
 	} else {
+		document.getElementById("deletedata-btn").disabled = true;
 		// console.log("WAIT")
 		deletedataststus.innerHTML = "wait let us check"
 		firebase.database().ref('Picture/' + fileid).on('value', function(snapshot) {
@@ -72,4 +73,4 @@ document.getElementById("deletedata-btn").onclick = function() {
 
 
 
-console.disableYellowBox = true;
+// console.disableYellowBox = true;

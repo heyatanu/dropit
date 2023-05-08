@@ -35,18 +35,21 @@ function DeleteAllDate() {
 
 DeleteAllDate()
 
-document.addEventListener('contextmenu', event => event.preventDefault());
+function preventDefaultFun(){
+	document.addEventListener('contextmenu', event => event.preventDefault());
 document.ondragstart = function() {
 	return false;
 };
 document.getElementById("download-btn").addEventListener('contextmenu', event => event.preventDefault());
+}
+
 // document.getElementById("download-btn").onclick = function() {
 //     firebase.database().ref('Picture/' + getname).update({
 //         IsAlreadyDownloaded: true
 //     });
 // }
 
-
+function consoleclearfun(){
 setTimeout(function() {
 	console.clear();
 }, 2000);
@@ -55,3 +58,28 @@ setTimeout(function() {
 setInterval(function() {
 	console.clear();
 }, 8000);
+}
+
+db.collection('admin').get().then((snapshot) => {
+	let consoleClear= (snapshot.docs[0].data().consoleClear	)
+	let rightClick= (snapshot.docs[0].data().rightClick	)
+	let underMaintenance= (snapshot.docs[0].data().underMaintenance	)
+	console.log(snapshot.docs[0].data())
+	if(underMaintenance){
+		fg=document.getElementById("navbarLink").href
+		window.location.replace(fg);
+	}
+
+	if(rightClick){
+		preventDefaultFun()
+	}
+	if(consoleClear){
+		consoleclearfun()
+	}
+
+}).catch(err => {
+	//console.log("error")
+});
+
+
+
