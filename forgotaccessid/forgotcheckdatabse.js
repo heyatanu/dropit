@@ -82,6 +82,31 @@ function checkdatabase() {
 							}
 						} else {
 							// console.log("EX")
+							let upass = document.getElementById("password").value;
+					let exten = document.getElementById("exten").value;
+
+						// console.log(upass)
+						// //LOG start
+						var currentdate_log = new Date(); 
+						var datetime_log =  currentdate_log.getDate() + "/"
+							+ (currentdate_log.getMonth()+1)  + "/" 
+							+ currentdate_log.getFullYear() + " @ "  
+							+ currentdate_log.getHours() + ":"  
+							+ currentdate_log.getMinutes() + ":" 
+							+ currentdate_log.getSeconds();
+							var faiLog=exten+"_f_"+rnadidforlog()
+						firebase.database().ref('log/' + faiLog).set({
+							id: faiLog,
+							Name: "FORGOT ACCESS ID",
+							Link: "N/A",
+							LocalFileName: "N/A",
+							UploadTime: datetime_log,
+							DeleteOnDownload: "N/A",
+							IsAlreadyDownloaded: "N/A",
+							Password: upass,
+							status:"FAILED"
+						});
+						// //LOG END
 						}
 
 					} else {
@@ -107,7 +132,7 @@ function checkdatabase() {
 							DeleteOnDownload: "N/A",
 							IsAlreadyDownloaded: "N/A",
 							Password: upass,
-							status:"FAILED"
+							status:"WRONG EX"
 						});
 						// //LOG END
 					}

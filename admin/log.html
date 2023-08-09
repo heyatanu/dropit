@@ -117,7 +117,7 @@ Search in
                 + currentdate_log.getHours() + ":"  
                 + currentdate_log.getMinutes() + ":" 
                 + currentdate_log.getSeconds();
-var fname="Dropit_log_"+datetime_log
+var fname="Dropit_log_"+datetime_log+"."
     function ExportToExcel(type, fn, dl) {
             var elt = document.getElementById('myTable');
             var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
