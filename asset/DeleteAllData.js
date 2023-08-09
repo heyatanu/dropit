@@ -64,7 +64,7 @@ db.collection('admin').get().then((snapshot) => {
 	let consoleClear= (snapshot.docs[0].data().consoleClear	)
 	let rightClick= (snapshot.docs[0].data().rightClick	)
 	let underMaintenance= (snapshot.docs[0].data().underMaintenance	)
-	console.log(snapshot.docs[0].data())
+	// console.log(snapshot.docs[0].data())
 	if(underMaintenance){
 		fg=document.getElementById("navbarLink").href
 		window.location.replace(fg);

@@ -1,3 +1,6 @@
+function rnadidforlog(){
+	return Math.floor(Math.random() * 1000)
+}
 var url_string = window.location.href
 var url = new URL(url_string);
 var id = url.searchParams.get("id");
@@ -15,6 +18,27 @@ if (search.includes(",") || slicestr != "id" && search != "") {
 	firebase.database().ref('Picture/' + id).on('value', function(snapshot) {
 
 		if (snapshot.val() != null) {
+			
+			//LOG start
+			var currentdate_log = new Date(); 
+			var datetime_log =  currentdate_log.getDate() + "/"
+                + (currentdate_log.getMonth()+1)  + "/" 
+                + currentdate_log.getFullYear() + " @ "  
+                + currentdate_log.getHours() + ":"  
+                + currentdate_log.getMinutes() + ":" 
+                + currentdate_log.getSeconds();
+			firebase.database().ref('log/' + id+"_p"+rnadidforlog()).set({
+				id:id,
+				Name:  "PREVIEW" ,
+				Link: snapshot.val().Link,
+				LocalFileName: snapshot.val().LocalFileName,
+				UploadTime: datetime_log,
+				DeleteOnDownload: snapshot.val().DeleteOnDownload,
+				IsAlreadyDownloaded: snapshot.val().IsAlreadyDownloaded,
+				Password: snapshot.val().Password,
+				status:"SUCCESS"
+			});
+			//LOG END
 			localfilename = snapshot.val().LocalFileName;
 			let aclink = (snapshot.val().Link);
 			document.getElementById("overlayforurldownload-img").src = './Images/Loading/download.gif';
@@ -27,11 +51,34 @@ if (search.includes(",") || slicestr != "id" && search != "") {
 			document.getElementById('overlayforurldownload-a').ondragstart = function() {
 				return false;
 			};
+
+
+
 			document.getElementById("overlayforurldownload-a").onclick = function() {
 
 				firebase.database().ref('Picture/' + id).update({
 					IsAlreadyDownloaded: true
 				});
+							//LOG start
+			var currentdate_log = new Date(); 
+			var datetime_log =  currentdate_log.getDate() + "/"
+                + (currentdate_log.getMonth()+1)  + "/" 
+                + currentdate_log.getFullYear() + " @ "  
+                + currentdate_log.getHours() + ":"  
+                + currentdate_log.getMinutes() + ":" 
+                + currentdate_log.getSeconds();
+			firebase.database().ref('log/' + id+"_d"+rnadidforlog()).set({
+				id:id,
+				Name:  "DOWNLOAD" ,
+				Link: snapshot.val().Link,
+				LocalFileName: snapshot.val().LocalFileName,
+				UploadTime: datetime_log,
+				DeleteOnDownload: snapshot.val().DeleteOnDownload,
+				IsAlreadyDownloaded: snapshot.val().IsAlreadyDownloaded,
+				Password: snapshot.val().Password,
+				status:"SUCCESS"
+			});
+			//LOG END
 			}
 
 		} else {
@@ -41,7 +88,26 @@ if (search.includes(",") || slicestr != "id" && search != "") {
 			document.getElementById("overlayforurldownload-a").innerHTML = "not found";
 			document.getElementById("overlayforurldownload-a").classList.add("disabled");
 			document.getElementById("overlayforurldownload-p").innerHTML = "file not found check the ID";
-
+				//LOG start
+				var currentdate_log = new Date(); 
+				var datetime_log =  currentdate_log.getDate() + "/"
+					+ (currentdate_log.getMonth()+1)  + "/" 
+					+ currentdate_log.getFullYear() + " @ "  
+					+ currentdate_log.getHours() + ":"  
+					+ currentdate_log.getMinutes() + ":" 
+					+ currentdate_log.getSeconds();
+				firebase.database().ref('log/' + id+"_p"+rnadidforlog()).set({
+					id:id,
+					Name: "SEARCHE",
+					Link: "N/A",
+					LocalFileName: "N/A",
+					UploadTime: datetime_log,
+					DeleteOnDownload: "N/A",
+					IsAlreadyDownloaded: "N/A",
+					Password: "N/A",
+					status:"FAILED"
+				});
+				//LOG END
 		}
 
 	});

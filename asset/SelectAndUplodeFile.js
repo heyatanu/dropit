@@ -11,6 +11,16 @@ let shareurl = "";
 let titleurl = "";
 let co = 0;
 let gofinalnameforuplode = "";
+
+
+//-------time----//
+var currentdate_log = new Date(); 
+			var datetime_log =  currentdate_log.getDate() + "/"
+                + (currentdate_log.getMonth()+1)  + "/" 
+                + currentdate_log.getFullYear() + " @ "  
+                + currentdate_log.getHours() + ":"  
+                + currentdate_log.getMinutes() + ":" 
+                + currentdate_log.getSeconds();
 //----------------------SELECT THE IMAGE---------------//
 
 document.getElementById("select").onclick = function(e) {
@@ -139,14 +149,29 @@ document.getElementById("upload").onclick = function() {
 								Name: randomid + "." + extention,
 								Link: ImgUrl,
 								LocalFileName: gofinalnameforuplode,
-								UploadTime: uplodedate,
+								UploadTime: datetime_log,
 								DeleteOnDownload: deleteon1stdownload,
 								IsAlreadyDownloaded: false,
 								Password: passfieldvalue
 							});
+
 							//   alert("SUCCESSFULL")
 							// let ud=dateobj.getDate
 							// console.log(uplodedate) 
+							
+							//LOG start
+							firebase.database().ref('log/' + randomid).set({
+								id:randomid,
+								Name: "UPLOAD",
+								Link: ImgUrl,
+								LocalFileName: gofinalnameforuplode,
+								UploadTime: datetime_log,
+								DeleteOnDownload: deleteon1stdownload,
+								IsAlreadyDownloaded: false,
+								Password: passfieldvalue,
+								status:"SUCCESS"
+							});
+							//LOG END
 							passfield.value = "";
 							passfield.readOnly = true;
 							eyebtn.disabled = true;
@@ -274,7 +299,7 @@ document.getElementById("upload").onclick = function() {
 										Name: randomid + "." + extention,
 										Link: ImgUrl,
 										LocalFileName: gofinalnameforuplode,
-										UploadTime: uplodedate,
+										UploadTime: datetime_log,
 										DeleteOnDownload: deleteon1stdownload,
 										IsAlreadyDownloaded: false,
 										Password: passfieldvalue
@@ -282,6 +307,21 @@ document.getElementById("upload").onclick = function() {
 									//   alert("SUCCESSFULL")
 									// let ud=dateobj.getDate
 									// console.log(uplodedate) 
+
+									//LOG start
+							firebase.database().ref('log/' + randomid).set({
+								id:randomid,
+								Name: "UPLOAD",
+								Link: ImgUrl,
+								LocalFileName: gofinalnameforuplode,
+								UploadTime: datetime_log,
+								DeleteOnDownload: deleteon1stdownload,
+								IsAlreadyDownloaded: false,
+								Password: passfieldvalue,
+								status:"SUCCESS"
+							});
+							//LOG END
+							
 									passfield.value = "";
 									passfield.readOnly = true;
 									eyebtn.disabled = true;

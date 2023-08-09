@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    var password = prompt("Enter in the password");
+    while(password!="9933")
+      if (password!="9933") {
+        password = prompt("Enter in the password")
+      }
+  </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-Log</title>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        
+        #myInput {
+          background-image: url('/css/searchicon.png');
+          background-position: 10px 10px;
+          background-repeat: no-repeat;
+          width: 100%;
+          font-size: 14px;
+          padding: 12px 20px 12px 40px;
+          border: 1px solid #ddd;
+          margin-bottom: 12px;
+        }
+        
+        #myTable {
+          border-collapse: collapse;
+          width: 100%;
+          border: 1px solid #ddd;
+          font-size: 14px;
+        }
+        
+        #myTable th, #myTable td {
+          text-align: left;
+          padding: 12px;
+        }
+        
+        #myTable tr {
+          border-bottom: 1px solid #ddd;
+        }
+        
+        #myTable tr.header, #myTable tr:hover {
+          background-color: #f1f1f1;
+        }
+        /* tr:nth-child(even) {
+  background-color: #D6EEEE;
+} */
+        </style>
+</head>
+<body>
+    <div style="padding: 10px;">
+
+    
+<h2>Logs</h2>
+<button onclick="ExportToExcel('xlsx')">Export log to excel</button>
+Search in 
+<select id="column_index">
+    <option value="0">ID</option>
+    <option value="1">Action</option>
+    <option value="2">Local File name</option>
+    <option value="3">Status</option>
+    <option value="4">Paass</option>
+    <option value="5">Date</option>
+    <option value="6">Link</option>
+ 
+</select>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for ..." title="Type in a name">
+<div style="overflow-x:auto;">
+<table id="myTable" >
+</table>
+</div>
+    </div>
+    
+</body>
+    <!-- ------------------------FIRBASE LIBRARIES------------------------------------------------->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="./../InitializeFirebase.js"></script>
+    <script src="./log.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+
+
+<script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      filter=filter.trim();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[document.getElementById("column_index").value];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+    }
+    var currentdate_log = new Date(); 
+			var datetime_log =  currentdate_log.getDate() + "/"
+                + (currentdate_log.getMonth()+1)  + "/" 
+                + currentdate_log.getFullYear() + " @ "  
+                + currentdate_log.getHours() + ":"  
+                + currentdate_log.getMinutes() + ":" 
+                + currentdate_log.getSeconds();
+var fname="Dropit_log_"+datetime_log
+    function ExportToExcel(type, fn, dl) {
+            var elt = document.getElementById('myTable');
+            var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+            return dl ?
+                XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }) :
+                XLSX.writeFile(wb, fn || (fname + (type || 'xlsx')));
+        }
+    </script>
+    
+</html>

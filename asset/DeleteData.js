@@ -1,3 +1,6 @@
+function rnadidforlog(){
+	return Math.floor(Math.random() * 1000)
+}
 document.getElementById("deletedata-btn").onclick = function() {
 	
 	let fileid = document.getElementById("deletedata-id").value;
@@ -26,6 +29,27 @@ document.getElementById("deletedata-btn").onclick = function() {
 						DeleteOnDownload: true,
 						IsAlreadyDownloaded: true
 					});
+
+					//LOG start
+					var currentdate_log = new Date(); 
+			var datetime_log =  currentdate_log.getDate() + "/"
+                + (currentdate_log.getMonth()+1)  + "/" 
+                + currentdate_log.getFullYear() + " @ "  
+                + currentdate_log.getHours() + ":"  
+                + currentdate_log.getMinutes() + ":" 
+                + currentdate_log.getSeconds();
+					firebase.database().ref('log/' + fileid+'_d').set({
+						id:fileid,
+						Name: "DELETE",
+						Link: snapshot.val().Link,
+						LocalFileName: snapshot.val().LocalFileName,
+						UploadTime: datetime_log,
+						DeleteOnDownload: snapshot.val().DeleteOnDownload,
+						IsAlreadyDownloaded: snapshot.val().IsAlreadyDownloaded,
+						Password: snapshot.val().Password,
+						status:"SUCCESS"
+					});
+					//LOG END
 					deletedataststus.innerHTML = "wait"
 					setTimeout(function() {
 						document.getElementById("overlayforurldownload").style.display = "block";
@@ -49,6 +73,29 @@ document.getElementById("deletedata-btn").onclick = function() {
 				} else {
 					//WRONG EXTENTION
 					// console.log("NOT EX")
+						//NOT FOUND
+				// console.log("NOT FOUND")
+								//LOG start
+								var currentdate_log = new Date(); 
+								var datetime_log =  currentdate_log.getDate() + "/"
+									+ (currentdate_log.getMonth()+1)  + "/" 
+									+ currentdate_log.getFullYear() + " @ "  
+									+ currentdate_log.getHours() + ":"  
+									+ currentdate_log.getMinutes() + ":" 
+									+ currentdate_log.getSeconds();
+								firebase.database().ref('log/' + fileid+"_p"+rnadidforlog()).set({
+									id:fileid,
+									Name: "DELETE",
+									Link: "N/A",
+									LocalFileName: "N/A",
+									UploadTime: datetime_log,
+									DeleteOnDownload: "N/A",
+									IsAlreadyDownloaded: "N/A",
+									Password: fileex,
+									status:"WRONG PASS"
+								});
+								//LOG END
+
 					deletedataststus.innerHTML = "please check"
 					document.getElementById("deletedata-btn").disabled = false;
 					setTimeout(function() {
@@ -59,6 +106,26 @@ document.getElementById("deletedata-btn").onclick = function() {
 			} else {
 				//NOT FOUND
 				// console.log("NOT FOUND")
+								//LOG start
+								var currentdate_log = new Date(); 
+								var datetime_log =  currentdate_log.getDate() + "/"
+									+ (currentdate_log.getMonth()+1)  + "/" 
+									+ currentdate_log.getFullYear() + " @ "  
+									+ currentdate_log.getHours() + ":"  
+									+ currentdate_log.getMinutes() + ":" 
+									+ currentdate_log.getSeconds();
+								firebase.database().ref('log/' + fileid+"_p"+rnadidforlog()).set({
+									id:fileid,
+									Name: "DELETE",
+									Link: "N/A",
+									LocalFileName: "N/A",
+									UploadTime: datetime_log,
+									DeleteOnDownload: "N/A",
+									IsAlreadyDownloaded: "N/A",
+									Password: fileex,
+									status:"FAILED"
+								});
+								//LOG END
 				deletedataststus.innerHTML = "file not found"
 				popupNotificationfx("file not found")
 				document.getElementById("deletedata-btn").disabled = false;

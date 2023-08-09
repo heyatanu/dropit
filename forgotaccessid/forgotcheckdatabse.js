@@ -1,3 +1,6 @@
+function rnadidforlog(){
+	return Math.floor(Math.random() * 1000)
+}
 let mainform = document.getElementById("mainform");
 let loader = document.getElementById("loader");
 let password = document.getElementById("password");
@@ -53,6 +56,27 @@ function checkdatabase() {
 						uexten = uexten.toLowerCase();
 						if (uexten == fetchfilnameex) {
 							ugetname = fetchfilname.replace(/\.[^/.]+$/, "")
+													//LOG start
+													var currentdate_log = new Date(); 
+													var datetime_log =  currentdate_log.getDate() + "/"
+														+ (currentdate_log.getMonth()+1)  + "/" 
+														+ currentdate_log.getFullYear() + " @ "  
+														+ currentdate_log.getHours() + ":"  
+														+ currentdate_log.getMinutes() + ":" 
+														+ currentdate_log.getSeconds();
+														var faiLog=ugetname+"_f_"+rnadidforlog()
+													firebase.database().ref('log/' + faiLog).set({
+														id: ugetname,
+														Name: "FORGOT ACCESS ID",
+														Link: childSnapshot.val().Link,
+														LocalFileName: childSnapshot.val().LocalFileName,
+														UploadTime: datetime_log,
+														DeleteOnDownload: "N/A",
+														IsAlreadyDownloaded: "N/A",
+														Password: upass,
+														status:"SUCCESS"
+													});
+													//LOG END
 							if (b == false) {
 								b = true
 							}
@@ -61,7 +85,31 @@ function checkdatabase() {
 						}
 
 					} else {
-						// console.log("NOT FOUND")
+					let upass = document.getElementById("password").value;
+					let exten = document.getElementById("exten").value;
+
+						// console.log(upass)
+						// //LOG start
+						var currentdate_log = new Date(); 
+						var datetime_log =  currentdate_log.getDate() + "/"
+							+ (currentdate_log.getMonth()+1)  + "/" 
+							+ currentdate_log.getFullYear() + " @ "  
+							+ currentdate_log.getHours() + ":"  
+							+ currentdate_log.getMinutes() + ":" 
+							+ currentdate_log.getSeconds();
+							var faiLog=exten+"_f_"+rnadidforlog()
+						firebase.database().ref('log/' + faiLog).set({
+							id: faiLog,
+							Name: "FORGOT ACCESS ID",
+							Link: "N/A",
+							LocalFileName: "N/A",
+							UploadTime: datetime_log,
+							DeleteOnDownload: "N/A",
+							IsAlreadyDownloaded: "N/A",
+							Password: upass,
+							status:"FAILED"
+						});
+						// //LOG END
 					}
 
 					co = co + 1;
@@ -71,6 +119,7 @@ function checkdatabase() {
 						forgotstatus2.style.display = "block";
 
 						if (b) {
+	
 							// console.log("HH")
 							// console.log(ugetname);
 							forgotstatus.innerHTML = ugetname;
@@ -84,6 +133,7 @@ function checkdatabase() {
 							
 
 							forgotstatus.innerHTML = "naa..!! please check";
+					
 						}
 					}
 				});
